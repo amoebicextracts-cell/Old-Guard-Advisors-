@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Old Guard Cannabis Advisors — Extraction & Operations Consulting</title>
+<meta name="description" content="Cannabis extraction and operations advisory led by Alex Marzec — 20 years of hands-on craft and executive-level facility leadership across CO, OR, WA, and NY.">
+<link rel="icon" href="images/logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0c0e09;
+    --panel:#14170f;
+    --panel-2:#191d13;
+    --gold:#c9a24b;
+    --gold-bright:#e8c878;
+    --green-deep:#2f4a2e;
+    --green-glow:#7a9c68;
+    --amber:#d89b3c;
+    --ink:#e8e4d8;
+    --ink-dim:#a39c88;
+    --ink-faint:#6e6858;
+    --rule:rgba(201,162,75,0.22);
+    --rule-soft:rgba(201,162,75,0.1);
+    --serif: 'Source Serif 4', Georgia, serif;
+    --display: 'Cinzel', 'Times New Roman', serif;
+    --utility: 'Inter', -apple-system, sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--void);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:18px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--gold); color:var(--void);}
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+
+  /* Texture: faint noise + vignette on the void */
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:1;
+    background-image:
+      radial-gradient(ellipse at 50% 0%, rgba(122,156,104,0.05), transparent 55%),
+      radial-gradient(ellipse at 100% 100%, rgba(201,162,75,0.04), transparent 50%);
+  }
+
+  /* ---------- Nav ---------- */
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(12,14,9,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--rule-soft);
+    transition:border-color .3s;
+  }
+  .nav-inner{
+    max-width:1120px; margin:0 auto; padding:16px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-brand{
+    display:flex; align-items:center; gap:12px;
+    font-family:var(--display); font-size:15px; letter-spacing:0.14em;
+    text-decoration:none; color:var(--ink);
+  }
+  .nav-brand img{height:38px; width:38px; object-fit:contain;}
+  .nav-links{display:flex; gap:36px; list-style:none; font-family:var(--utility); font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase;}
+  .nav-links a{text-decoration:none; color:var(--ink-dim); transition:color .25s; position:relative;}
+  .nav-links a:hover{color:var(--gold-bright);}
+  .nav-links a:focus-visible{outline:2px solid var(--gold); outline-offset:4px;}
+  @media (max-width:760px){ .nav-links{display:none;} }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; align-items:center;
+    padding:140px 0 80px;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute; top:0; right:0; bottom:0; left:0;
+    background:
+      linear-gradient(100deg, var(--void) 32%, rgba(12,14,9,0.72) 55%, rgba(12,14,9,0.35) 100%),
+      url('images/resin-drop.jpg');
+    background-size:cover;
+    background-position:78% center;
+    opacity:0.9;
+  }
+  .hero-inner{position:relative; z-index:2; max-width:1120px; margin:0 auto; padding:0 32px; width:100%;}
+  .hero-logo{
+    height:96px; width:auto; margin-bottom:32px;
+    opacity:0; animation:riseIn 1s 0s forwards;
+    filter:drop-shadow(0 4px 24px rgba(0,0,0,0.4));
+  }
+  @media (max-width:600px){ .hero-logo{height:76px;} }
+  .hero-eyebrow{
+    font-family:var(--utility); font-size:12.5px; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:28px; opacity:0; animation:riseIn .9s .15s forwards;
+    display:flex; align-items:center; gap:14px;
+  }
+  .hero-eyebrow::before{content:''; width:32px; height:1px; background:var(--gold);}
+  .hero h1{
+    font-family:var(--display); font-weight:600;
+    font-size:clamp(34px, 5.4vw, 66px);
+    line-height:1.08; letter-spacing:0.005em;
+    max-width:15ch;
+    color:var(--ink);
+    opacity:0; animation:riseIn 1s .3s forwards;
+  }
+  .hero h1 em{font-style:normal; color:var(--gold-bright);}
+  .hero p.lede{
+    font-family:var(--serif); font-size:20px; color:var(--ink-dim);
+    max-width:46ch; margin-top:26px; line-height:1.6;
+    opacity:0; animation:riseIn 1s .5s forwards;
+  }
+  .hero-actions{
+    margin-top:44px; display:flex; gap:20px; align-items:center; flex-wrap:wrap;
+    opacity:0; animation:riseIn 1s .7s forwards;
+  }
+  @keyframes riseIn{ from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);} }
+  @media (prefers-reduced-motion: reduce){
+    .hero-eyebrow,.hero h1,.hero p.lede,.hero-actions{animation:none; opacity:1;}
+  }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--utility); font-size:13px; letter-spacing:0.08em; text-transform:uppercase;
+    padding:15px 28px; text-decoration:none; border-radius:2px;
+    transition:transform .25s, background .25s, border-color .25s;
+  }
+  .btn-primary{background:var(--gold); color:var(--void); font-weight:600;}
+  .btn-primary:hover{background:var(--gold-bright); transform:translateY(-1px);}
+  .btn-ghost{border:1px solid var(--rule); color:var(--ink-dim);}
+  .btn-ghost:hover{border-color:var(--gold); color:var(--gold-bright);}
+  .btn:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+
+  /* ---------- Section scaffolding ---------- */
+  section{padding:118px 0; position:relative;}
+  section.alt{background:var(--panel);}
+  .section-head{max-width:640px; margin-bottom:64px;}
+  .eyebrow{
+    font-family:var(--utility); font-size:12px; letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--gold); display:flex; align-items:center; gap:12px; margin-bottom:18px;
+  }
+  .eyebrow::before{content:''; width:26px; height:1px; background:var(--gold);}
+  h2{
+    font-family:var(--display); font-weight:600; font-size:clamp(28px,3.4vw,42px);
+    line-height:1.18; color:var(--ink);
+  }
+  .section-head p{margin-top:18px; color:var(--ink-dim); font-size:19px; max-width:52ch;}
+
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- About ---------- */
+  .about-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:72px; align-items:start;}
+  @media (max-width:860px){ .about-grid{grid-template-columns:1fr; gap:40px;} }
+  .about-mark{
+    border:1px solid var(--rule); padding:36px 30px; position:relative;
+  }
+  .about-mark::before,.about-mark::after{
+    content:''; position:absolute; width:14px; height:14px; border:1px solid var(--gold);
+  }
+  .about-mark::before{top:-1px; left:-1px; border-right:none; border-bottom:none;}
+  .about-mark::after{bottom:-1px; right:-1px; border-left:none; border-top:none;}
+  .about-mark .num{font-family:var(--display); font-size:44px; color:var(--gold-bright); line-height:1;}
+  .about-mark .label{font-family:var(--utility); font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-dim); margin-top:10px;}
+  .about-mark + .about-mark{margin-top:24px;}
+  .about-copy p{color:var(--ink-dim); font-size:18px; margin-bottom:20px;}
+  .about-copy p strong{color:var(--ink); font-weight:600;}
+  .about-copy p:last-child{margin-bottom:0;}
+
+  /* ---------- Services ---------- */
+  .services{display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:var(--rule-soft); border:1px solid var(--rule-soft);}
+  @media (max-width:760px){ .services{grid-template-columns:1fr;} }
+  .service{background:var(--void); padding:44px 40px;}
+  section.alt .service{background:var(--panel);}
+  .service h3{
+    font-family:var(--display); font-size:21px; font-weight:600; color:var(--gold-bright);
+    margin-bottom:16px; letter-spacing:0.01em;
+  }
+  .service p{color:var(--ink-dim); font-size:16.5px;}
+  .service .tag-row{margin-top:18px; display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    font-family:var(--utility); font-size:11px; letter-spacing:0.05em; text-transform:uppercase;
+    color:var(--ink-faint); border:1px solid var(--rule-soft); padding:5px 10px;
+  }
+
+  /* ---------- Record (ledger style, not stat cards) ---------- */
+  .ledger{border-top:1px solid var(--rule);}
+  .ledger-row{
+    display:grid; grid-template-columns:220px 1fr; gap:32px;
+    padding:26px 0; border-bottom:1px solid var(--rule-soft);
+    align-items:baseline;
+  }
+  @media (max-width:640px){ .ledger-row{grid-template-columns:1fr; gap:6px;} }
+  .ledger-figure{
+    font-family:var(--display); font-size:26px; color:var(--gold-bright); font-weight:600; white-space:nowrap;
+  }
+  .ledger-desc{color:var(--ink-dim); font-size:17px;}
+  .ledger-desc .place{color:var(--ink); font-weight:600; font-family:var(--serif);}
+
+  /* ---------- Badges (signature element) ---------- */
+  .badge-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:28px;}
+  .badge{
+    position:relative; padding:30px 22px 26px; text-align:center;
+    border:1px solid var(--rule);
+  }
+  .badge-ring{
+    width:56px; height:56px; margin:0 auto 18px; border-radius:50%;
+    border:1px solid var(--gold); display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .badge-ring::before{content:''; position:absolute; inset:5px; border:1px solid var(--rule);border-radius:50%;}
+  .badge-ring span{font-family:var(--display); font-size:12px; color:var(--gold-bright);}
+  .badge h4{font-family:var(--display); font-size:15px; color:var(--ink); font-weight:600; margin-bottom:8px; line-height:1.3;}
+  .badge p{font-family:var(--utility); font-size:12.5px; color:var(--ink-faint); letter-spacing:0.02em;}
+
+  /* ---------- Work history ---------- */
+  .work-item{
+    border-bottom:1px solid var(--rule-soft); padding:34px 0;
+    display:grid; grid-template-columns:200px 1fr; gap:32px;
+  }
+  @media (max-width:700px){ .work-item{grid-template-columns:1fr; gap:8px;} }
+  .work-item:first-child{padding-top:0;}
+  .work-period{font-family:var(--utility); font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); padding-top:4px;}
+  .work-body h3{font-family:var(--display); font-size:19px; color:var(--ink); font-weight:600; margin-bottom:4px;}
+  .work-body .role{font-family:var(--utility); font-size:13px; color:var(--ink-faint); margin-bottom:12px; letter-spacing:0.02em;}
+  .work-body p{color:var(--ink-dim); font-size:16.5px;}
+
+  /* ---------- ResinOps callout ---------- */
+  .callout{
+    border:1px solid var(--rule); padding:52px 48px;
+    display:grid; grid-template-columns:1fr auto; gap:40px; align-items:center;
+    background:linear-gradient(135deg, rgba(122,156,104,0.05), transparent 60%);
+  }
+  @media (max-width:700px){ .callout{grid-template-columns:1fr;} }
+  .callout h3{font-family:var(--display); font-size:24px; color:var(--ink); margin-bottom:14px; font-weight:600;}
+  .callout p{color:var(--ink-dim); font-size:17px; max-width:52ch;}
+
+  /* ---------- Contact ---------- */
+  .contact-inner{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  @media (max-width:760px){ .contact-inner{grid-template-columns:1fr; gap:40px;} }
+  .contact-line{
+    display:flex; align-items:baseline; justify-content:space-between;
+    padding:22px 0; border-bottom:1px solid var(--rule-soft);
+    font-family:var(--utility); font-size:14px; letter-spacing:0.04em;
+  }
+  .contact-line .k{color:var(--ink-faint); text-transform:uppercase; font-size:12px; letter-spacing:0.1em;}
+  .contact-line .v a{text-decoration:none; color:var(--ink); font-size:17px; font-family:var(--serif); transition:color .2s;}
+  .contact-line .v a:hover{color:var(--gold-bright);}
+
+  footer{
+    border-top:1px solid var(--rule-soft); padding:40px 0;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+    font-family:var(--utility); font-size:12px; color:var(--ink-faint); letter-spacing:0.04em;
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#top">
+      <img src="images/logo.webp" alt="">
+      OLD&nbsp;GUARD
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Advisory</a></li>
+      <li><a href="#record">Record</a></li>
+      <li><a href="#work">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <img class="hero-logo" src="images/logo.webp" alt="Old Guard Cannabis Advisors">
+      <div class="hero-eyebrow">Cannabis Extraction &amp; Operations Advisory</div>
+      <h1>Before it was legal, it was a craft. <em>Old Guard still runs it that way.</em></h1>
+      <p class="lede">Alex Marzec has spent twenty years turning cannabis operations into disciplined, compliant, award-winning production — from bubble hash on a folding table to GMP-certified extraction floors running six figures a week.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Start a conversation</a>
+        <a class="btn btn-ghost" href="#work">See the record</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="about-grid reveal">
+        <div>
+          <div class="about-mark">
+            <div class="num">20+</div>
+            <div class="label">Years in extraction &amp; operations</div>
+          </div>
+          <div class="about-mark">
+            <div class="num">4</div>
+            <div class="label">States licensed &amp; commissioned — CO · OR · WA · NY</div>
+          </div>
+        </div>
+        <div class="about-copy">
+          <div class="eyebrow">The Craft</div>
+          <p><strong>Old Guard Cannabis Advisors is built around one person's unusual path through this industry.</strong> Fifteen years of hands-on hash-making and extraction craft before licensure existed — bubble hash, ice water, full melt, rosin — followed by a decade running extraction, manufacturing, and compliance for some of the largest vertically integrated operators in Colorado and New York.</p>
+          <p>Most consultants know the regulations. Fewer have actually run the wash, pulled the rosin at 2am to hit a deadline, or stood in front of a GMP audit defending SOPs they wrote themselves. Alex has done both — Connoisseur Cup-winning concentrate production on one side of the ledger, $16M+ in directed infrastructure builds on the other.</p>
+          <p>That combination — artisan judgment plus operational rigor — is what Old Guard brings to every engagement: facility design, licensing, extraction systems, quality frameworks, and the commercialization work that turns a compliant facility into a profitable one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Advisory</div>
+        <h2>What Old Guard advises on</h2>
+        <p>Engagements typically start at one of four points — often more than one at once.</p>
+      </div>
+      <div class="services reveal">
+        <div class="service">
+          <h3>Extraction Systems &amp; Lab Design</h3>
+          <p>Solventless (bubble hash, rosin, full melt), hydrocarbon (BHO), CO2, cannabinoid distillation, and R-134a post-processing — equipment selection, layout, and commissioning from concept to first run.</p>
+          <div class="tag-row"><span class="tag">Comerg R-134a</span><span class="tag">Extractiontek</span><span class="tag">Root Sciences VTA</span><span class="tag">Precision PX1/X10</span></div>
+        </div>
+        <div class="service">
+          <h3>GMP, Quality &amp; Compliance</h3>
+          <p>HACCP programs, SOP authorship, ISO 9001 quality frameworks, and the regulatory documentation that gets novel extraction methods approved by state agencies rather than flagged by them.</p>
+          <div class="tag-row"><span class="tag">HACCP</span><span class="tag">ISO 9001 / 22000</span><span class="tag">METRC</span><span class="tag">OCM Approvals</span></div>
+        </div>
+        <div class="service">
+          <h3>Facility Startup &amp; Commissioning</h3>
+          <p>Ground-up extraction and cultivation lab design, licensing support, and commissioning — including one of the first Comerg 50L R-134a deployments in the New York licensed market.</p>
+          <div class="tag-row"><span class="tag">Facility Design</span><span class="tag">Licensing</span><span class="tag">Commissioning</span></div>
+        </div>
+        <div class="service">
+          <h3>Product Development &amp; Commercialization</h3>
+          <p>Turning a working facility into a working brand — 100+ products launched across flower, concentrate, vape, pre-roll, and infused categories, into 700+ retail doors.</p>
+          <div class="tag-row"><span class="tag">Brand Launch</span><span class="tag">SKU Development</span><span class="tag">Distribution</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="record">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">The Record</div>
+        <h2>Numbers from real facility floors</h2>
+        <p>Not projections — production that happened, verified by the operators who wrote the checks.</p>
+      </div>
+      <div class="ledger reveal">
+        <div class="ledger-row">
+          <div class="ledger-figure">750 lbs / 24 hrs</div>
+          <div class="ledger-desc">Biomass throughput designed and commissioned at <span class="place">Buddies Brand</span>, Merlin, OR — running continuously, seven days a week.</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-figure">20,000+ / week</div>
+          <div class="ledger-desc">Finished manufacturing units directed at <span class="place">Double Black Cannabis</span>, across 140+ SKUs distributed statewide.</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-figure">700+ doors</div>
+          <div class="ledger-desc">Retail locations supported through distribution built out during the Double Black and Acreage/NYCANNA engagements.</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-figure">$16M+</div>
+          <div class="ledger-desc">Cultivation, extraction, and manufacturing infrastructure directed in an 18-month window at <span class="place">Casa Verde Farms</span>, NY.</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-figure">100+ SKUs</div>
+          <div class="ledger-desc">Cannabis products commercialized across flower, concentrate, vape, pre-roll, and infused categories over the course of a career.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Recognition</div>
+        <h2>Awards &amp; credentials</h2>
+      </div>
+      <div class="badge-grid reveal">
+        <div class="badge">
+          <div class="badge-ring"><span>'17</span></div>
+          <h4>Connoisseur Cup<br>1st Place Concentrates</h4>
+          <p>Cali-O Terp Jelly</p>
+        </div>
+        <div class="badge">
+          <div class="badge-ring"><span>'19</span></div>
+          <h4>Connoisseur Cup<br>1st Place Overall Concentrates</h4>
+          <p>VVS Blueberry Lemonade</p>
+        </div>
+        <div class="badge">
+          <div class="badge-ring"><span>'19</span></div>
+          <h4>Connoisseur Cup<br>1st Place Diamonds</h4>
+          <p>VVS Citrex Diamonds</p>
+        </div>
+        <div class="badge">
+          <div class="badge-ring"><span>LSS</span></div>
+          <h4>Lean Six Sigma<br>Black Belt</h4>
+          <p>Sigma Six Academy, Amsterdam</p>
+        </div>
+        <div class="badge">
+          <div class="badge-ring"><span>ISO</span></div>
+          <h4>ISO 9001:2015<br>Lead Auditor</h4>
+          <p>Plus ISO 22000 Food Safety</p>
+        </div>
+        <div class="badge">
+          <div class="badge-ring"><span>609</span></div>
+          <h4>EPA Section 609<br>MVAC Technician</h4>
+          <p>Refrigerant handling certification</p>
+        </div>
+        <div class="badge">
+          <div class="badge-ring"><span>NY</span></div>
+          <h4>NY Category 24 &amp; 1A<br>Pesticide Licenses</h4>
+          <p>Private applicator &amp; technician</p>
+        </div>
+        <div class="badge">
+          <div class="badge-ring"><span>GAP</span></div>
+          <h4>Cornell CALS<br>GAP Certification</h4>
+          <p>Good Agricultural Practices</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Experience</div>
+        <h2>Where the record was made</h2>
+      </div>
+      <div class="reveal">
+        <div class="work-item">
+          <div class="work-period">2024 — Present</div>
+          <div class="work-body">
+            <h3>Casa Verde Farms</h3>
+            <div class="role">Vice President of Processing · Wellsville, NY</div>
+            <p>Commissioned one of the first Comerg 50L R-134a solventless systems in the New York licensed market and authored the technical documentation that secured OCM approval for it. Directed $16M+ in cultivation, extraction, and manufacturing infrastructure over 18 months, scaling weekly production value past $150,000 during initial commercialization.</p>
+          </div>
+        </div>
+        <div class="work-item">
+          <div class="work-period">2022 — 2024</div>
+          <div class="work-body">
+            <h3>Acreage Holdings / NYCANNA</h3>
+            <div class="role">Director of Production · Syracuse, NY</div>
+            <p>Led extraction and manufacturing through New York's transition to adult-use, supporting $15–25M in annual revenue. Commercialized 100+ products and oversaw cultivation across nine grow rooms totaling 15,000 plants — while cutting labor requirements roughly 25% and adding three new production lines.</p>
+          </div>
+        </div>
+        <div class="work-item">
+          <div class="work-period">2017 — 2022</div>
+          <div class="work-body">
+            <h3>Double Black Cannabis</h3>
+            <div class="role">Chief Science &amp; Technology Officer · Carbondale / Rifle, CO</div>
+            <p>Ran all extraction, manufacturing, and technology operations for a $12–15M vertically integrated Colorado producer — 20,000+ units weekly across 140+ SKUs into 700+ retail doors, including three Connoisseur Cup wins. Restructured through COVID while holding ~50% of pre-pandemic output at ~90% fewer labor hours.</p>
+          </div>
+        </div>
+        <div class="work-item">
+          <div class="work-period">2016 — 2017</div>
+          <div class="work-body">
+            <h3>Buddies Brand / JoCo Investments</h3>
+            <div class="role">Lab Director · Merlin, OR</div>
+            <p>Designed and launched a high-throughput extraction laboratory processing up to 750 lbs of biomass per 24-hour cycle, seven days a week — licensed by the OLCC in June 2017.</p>
+          </div>
+        </div>
+        <div class="work-item">
+          <div class="work-period">2016</div>
+          <div class="work-body">
+            <h3>Botanical Arts</h3>
+            <div class="role">Partner, CSTO &amp; Lab Director · Arlington / Seattle, WA</div>
+            <p>Designed and commissioned a Washington I502-licensed extraction lab from the ground up. Third operator in the world trained on the Root Sciences VTA short-path thin-film molecular distillation plant.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="callout reveal">
+        <div>
+          <h3>Beyond advisory — Alex builds the tools his clients actually need.</h3>
+          <p><strong style="color:var(--ink)">ResinOps</strong> is a ground-up operations platform for licensed cannabis facilities — cultivation, extraction, compliance, and inventory in one system, built by someone who's run the floor himself.</p>
+        </div>
+        <a class="btn btn-ghost" href="https://resinops.com" target="_blank" rel="noopener">Visit ResinOps →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Get In Touch</div>
+        <h2>Start a conversation</h2>
+        <p>Facility startups, extraction system selection, compliance builds, or a second set of experienced eyes on an operation already running — reach out directly.</p>
+      </div>
+      <div class="contact-inner reveal">
+        <div>
+          <div class="contact-line"><span class="k">Email</span><span class="v"><a href="mailto:alex@oldguardcannabis.com">alex@oldguardcannabis.com</a></span></div>
+          <div class="contact-line"><span class="k">LinkedIn</span><span class="v"><a href="https://www.linkedin.com/in/alexander-marzec-522200228/" target="_blank" rel="noopener">Alexander Marzec →</a></span></div>
+          <div class="contact-line"><span class="k">Instagram</span><span class="v"><a href="https://www.instagram.com/ahashmakernamedalex2.0/" target="_blank" rel="noopener">@ahashmakernamedalex2.0 →</a></span></div>
+        </div>
+        <div>
+          <div class="contact-line"><span class="k">Location</span><span class="v" style="font-family:var(--serif); font-size:17px;">Skaneateles, NY</span></div>
+          <div class="contact-line"><span class="k">LinkedIn</span><span class="v"><a href="https://www.linkedin.com/company/104008501/" target="_blank" rel="noopener">Old Guard Cannabis →</a></span></div>
+          <div class="contact-line"><span class="k">Instagram</span><span class="v"><a href="https://www.instagram.com/oldguardcannabisadvisors/" target="_blank" rel="noopener">@oldguardcannabisadvisors →</a></span></div>
+          <div class="contact-line"><span class="k">Platform</span><span class="v"><a href="https://resinops.com" target="_blank" rel="noopener">ResinOps →</a></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="width:100%; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+    <span>© <span id="year"></span> Old Guard Cannabis Advisors LLC</span>
+    <span>Skaneateles, NY</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Nav border strengthens on scroll
+  const nav = document.querySelector('header.nav');
+  window.addEventListener('scroll', ()=>{
+    nav.style.borderBottomColor = window.scrollY > 40 ? 'rgba(201,162,75,0.35)' : 'rgba(201,162,75,0.1)';
+  });
+</script>
+
+</body>
+</html>
