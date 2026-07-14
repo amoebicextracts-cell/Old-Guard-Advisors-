@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Old Guard Cannabis Advisors — Extraction & Operations Consulting</title>
 <meta name="description" content="Cannabis extraction and operations advisory led by Alex Marzec — 20 years of hands-on craft and executive-level facility leadership across CO, OR, WA, and NY.">
-<link rel="icon" href="logo.webp">
+<link rel="icon" href="images/logo.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -89,7 +89,7 @@
     position:absolute; top:0; right:0; bottom:0; left:0;
     background:
       linear-gradient(100deg, var(--void) 32%, rgba(12,14,9,0.72) 55%, rgba(12,14,9,0.35) 100%),
-      url('resin-drop.jpg');
+      url('images/resin-drop.jpg');
     background-size:cover;
     background-position:78% center;
     opacity:0.9;
@@ -177,6 +177,20 @@
   .about-copy p{color:var(--ink-dim); font-size:18px; margin-bottom:20px;}
   .about-copy p strong{color:var(--ink); font-weight:600;}
   .about-copy p:last-child{margin-bottom:0;}
+
+  .about-photo{margin-top:56px; border:1px solid var(--rule);}
+  .about-photo img{width:100%; display:block; max-height:520px; object-fit:cover;}
+  .about-photo figcaption{
+    font-family:var(--utility); font-size:12px; letter-spacing:0.05em; color:var(--ink-faint);
+    padding:14px 18px; border-top:1px solid var(--rule-soft);
+  }
+
+  .awards-photo{margin-top:48px; border:1px solid var(--rule); max-width:640px;}
+  .awards-photo img{width:100%; display:block; max-height:460px; object-fit:cover;}
+  .awards-photo figcaption{
+    font-family:var(--utility); font-size:12px; letter-spacing:0.05em; color:var(--ink-faint);
+    padding:14px 18px; border-top:1px solid var(--rule-soft);
+  }
 
   /* ---------- Services ---------- */
   .services{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2px; background:var(--rule-soft); border:1px solid var(--rule-soft);}
@@ -272,7 +286,7 @@
 <header class="nav">
   <div class="nav-inner">
     <a class="nav-brand" href="#top">
-      <img src="logo.webp" alt="">
+      <img src="images/logo.webp" alt="">
       OLD&nbsp;GUARD
     </a>
     <ul class="nav-links">
@@ -280,6 +294,7 @@
       <li><a href="#services">Advisory</a></li>
       <li><a href="#record">Record</a></li>
       <li><a href="#work">Experience</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -290,7 +305,7 @@
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-inner">
-      <img class="hero-logo" src="logo.webp" alt="Old Guard Cannabis Advisors">
+      <img class="hero-logo" src="images/logo.webp" alt="Old Guard Cannabis Advisors">
       <div class="hero-eyebrow">Cannabis Extraction &amp; Operations Advisory</div>
       <h1>Before it was legal, it was a craft. <em>Old Guard still runs it that way.</em></h1>
       <p class="lede">Alex Marzec has spent twenty years turning cannabis operations into disciplined, compliant, award-winning production — from bubble hash on a folding table to GMP-certified extraction floors running six figures a week.</p>
@@ -325,6 +340,10 @@
           <p>That combination — artisan judgment plus operational rigor, cultivation through extraction — is what Old Guard brings to every engagement: canopy design, facility startup, extraction systems, quality frameworks, and the commercialization work that turns a compliant facility into a profitable one.</p>
         </div>
       </div>
+      <figure class="about-photo reveal">
+        <img src="images/about-hero.jpg" alt="Indoor cannabis cultivation canopy under warm grow lights">
+        <figcaption>44,000 sq ft of managed indoor canopy — Acreage Holdings / NYCANNA</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -458,6 +477,10 @@
           <p>Good Agricultural Practices</p>
         </div>
       </div>
+      <figure class="awards-photo reveal">
+        <img src="images/awards-hero.jpg" alt="Macro detail of a frosted, trichome-covered cannabis flower">
+        <figcaption>Connoisseur Cup-caliber genetics — Double Black Cannabis, Colorado</figcaption>
+      </figure>
     </div>
   </section>
 
