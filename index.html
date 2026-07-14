@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Old Guard Cannabis Advisors — Extraction & Operations Consulting</title>
 <meta name="description" content="Cannabis extraction and operations advisory led by Alex Marzec — 20 years of hands-on craft and executive-level facility leadership across CO, OR, WA, and NY.">
-<link rel="icon" href="images/logo.webp">
+<link rel="icon" href="logo.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -70,7 +70,7 @@
     font-family:var(--display); font-size:15px; letter-spacing:0.14em;
     text-decoration:none; color:var(--ink);
   }
-  .nav-brand img{height:34px; width:34px; border-radius:50%; object-fit:cover;}
+  .nav-brand img{height:38px; width:38px; object-fit:contain;}
   .nav-links{display:flex; gap:36px; list-style:none; font-family:var(--utility); font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase;}
   .nav-links a{text-decoration:none; color:var(--ink-dim); transition:color .25s; position:relative;}
   .nav-links a:hover{color:var(--gold-bright);}
@@ -89,12 +89,18 @@
     position:absolute; top:0; right:0; bottom:0; left:0;
     background:
       linear-gradient(100deg, var(--void) 32%, rgba(12,14,9,0.72) 55%, rgba(12,14,9,0.35) 100%),
-      url('images/resin-drop.jpg');
+      url('resin-drop.jpg');
     background-size:cover;
     background-position:78% center;
     opacity:0.9;
   }
   .hero-inner{position:relative; z-index:2; max-width:1120px; margin:0 auto; padding:0 32px; width:100%;}
+  .hero-logo{
+    height:96px; width:auto; margin-bottom:32px;
+    opacity:0; animation:riseIn 1s 0s forwards;
+    filter:drop-shadow(0 4px 24px rgba(0,0,0,0.4));
+  }
+  @media (max-width:600px){ .hero-logo{height:76px;} }
   .hero-eyebrow{
     font-family:var(--utility); font-size:12.5px; letter-spacing:0.22em; text-transform:uppercase;
     color:var(--gold); margin-bottom:28px; opacity:0; animation:riseIn .9s .15s forwards;
@@ -173,7 +179,7 @@
   .about-copy p:last-child{margin-bottom:0;}
 
   /* ---------- Services ---------- */
-  .services{display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:var(--rule-soft); border:1px solid var(--rule-soft);}
+  .services{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2px; background:var(--rule-soft); border:1px solid var(--rule-soft);}
   @media (max-width:760px){ .services{grid-template-columns:1fr;} }
   .service{background:var(--void); padding:44px 40px;}
   section.alt .service{background:var(--panel);}
@@ -266,7 +272,7 @@
 <header class="nav">
   <div class="nav-inner">
     <a class="nav-brand" href="#top">
-      <img src="images/logo.webp" alt="">
+      <img src="logo.webp" alt="">
       OLD&nbsp;GUARD
     </a>
     <ul class="nav-links">
@@ -284,6 +290,7 @@
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-inner">
+      <img class="hero-logo" src="logo.webp" alt="Old Guard Cannabis Advisors">
       <div class="hero-eyebrow">Cannabis Extraction &amp; Operations Advisory</div>
       <h1>Before it was legal, it was a craft. <em>Old Guard still runs it that way.</em></h1>
       <p class="lede">Alex Marzec has spent twenty years turning cannabis operations into disciplined, compliant, award-winning production — from bubble hash on a folding table to GMP-certified extraction floors running six figures a week.</p>
@@ -300,7 +307,11 @@
         <div>
           <div class="about-mark">
             <div class="num">20+</div>
-            <div class="label">Years in extraction &amp; operations</div>
+            <div class="label">Years in cultivation, extraction &amp; operations</div>
+          </div>
+          <div class="about-mark">
+            <div class="num">15,000+</div>
+            <div class="label">Plants under cultivation management at peak</div>
           </div>
           <div class="about-mark">
             <div class="num">4</div>
@@ -309,9 +320,9 @@
         </div>
         <div class="about-copy">
           <div class="eyebrow">The Craft</div>
-          <p><strong>Old Guard Cannabis Advisors is built around one person's unusual path through this industry.</strong> Fifteen years of hands-on hash-making and extraction craft before licensure existed — bubble hash, ice water, full melt, rosin — followed by a decade running extraction, manufacturing, and compliance for some of the largest vertically integrated operators in Colorado and New York.</p>
-          <p>Most consultants know the regulations. Fewer have actually run the wash, pulled the rosin at 2am to hit a deadline, or stood in front of a GMP audit defending SOPs they wrote themselves. Alex has done both — Connoisseur Cup-winning concentrate production on one side of the ledger, $16M+ in directed infrastructure builds on the other.</p>
-          <p>That combination — artisan judgment plus operational rigor — is what Old Guard brings to every engagement: facility design, licensing, extraction systems, quality frameworks, and the commercialization work that turns a compliant facility into a profitable one.</p>
+          <p><strong>Old Guard Cannabis Advisors is built around one person's unusual path through this industry.</strong> Fifteen years of hands-on hash-making and extraction craft before licensure existed — bubble hash, ice water, full melt, rosin — followed by a decade directing cultivation, extraction, and manufacturing for some of the largest vertically integrated operators in Colorado and New York, including 44,000 sq ft of single-, dual-, and triple-tier indoor canopy sustaining 15,000+ plants at any given time.</p>
+          <p>Most consultants know the regulations. Fewer have actually run the wash, walked a canopy at 6am to catch a flip date, or stood in front of a GMP audit defending SOPs they wrote themselves. Alex has done both — Connoisseur Cup-winning concentrate production on one side of the ledger, $16M+ in directed infrastructure builds on the other.</p>
+          <p>That combination — artisan judgment plus operational rigor, cultivation through extraction — is what Old Guard brings to every engagement: canopy design, facility startup, extraction systems, quality frameworks, and the commercialization work that turns a compliant facility into a profitable one.</p>
         </div>
       </div>
     </div>
@@ -325,6 +336,11 @@
         <p>Engagements typically start at one of four points — often more than one at once.</p>
       </div>
       <div class="services reveal">
+        <div class="service">
+          <h3>Cultivation Design &amp; Management</h3>
+          <p>Single-, dual-, and triple-tier indoor canopy design and operation — room layout, environmental systems, and the harvest planning that keeps 15,000+ plants and tens of thousands of square feet moving on schedule.</p>
+          <div class="tag-row"><span class="tag">Single/Dual/Triple-Tier</span><span class="tag">IPM</span><span class="tag">Cornell GAP Certified</span></div>
+        </div>
         <div class="service">
           <h3>Extraction Systems &amp; Lab Design</h3>
           <p>Solventless (bubble hash, rosin, full melt), hydrocarbon (BHO), CO2, cannabinoid distillation, and R-134a post-processing — equipment selection, layout, and commissioning from concept to first run.</p>
@@ -358,23 +374,31 @@
       </div>
       <div class="ledger reveal">
         <div class="ledger-row">
+          <div class="ledger-figure">44,000 sq ft</div>
+          <div class="ledger-desc">Indoor single-, dual-, and triple-stacked cultivation canopy managed at <span class="place">Acreage Holdings / NYCANNA</span>, sustaining 15,000+ plants at any given time.</div>
+        </div>
+        <div class="ledger-row">
+          <div class="ledger-figure">18,000 lbs / year</div>
+          <div class="ledger-desc">Cannabis cultivated annually across managed programs — plus 11,700+ lbs of biomass processed through extraction the same year.</div>
+        </div>
+        <div class="ledger-row">
           <div class="ledger-figure">750 lbs / 24 hrs</div>
           <div class="ledger-desc">Biomass throughput designed and commissioned at <span class="place">Buddies Brand</span>, Merlin, OR — running continuously, seven days a week.</div>
         </div>
         <div class="ledger-row">
-          <div class="ledger-figure">20,000+ / week</div>
-          <div class="ledger-desc">Finished manufacturing units directed at <span class="place">Double Black Cannabis</span>, across 140+ SKUs distributed statewide.</div>
+          <div class="ledger-figure">45,000+ / week</div>
+          <div class="ledger-desc">Peak finished manufacturing units directed across managed operations, spanning 140+ SKUs distributed statewide.</div>
         </div>
         <div class="ledger-row">
           <div class="ledger-figure">700+ doors</div>
-          <div class="ledger-desc">Retail locations supported through distribution built out during the Double Black and Acreage/NYCANNA engagements.</div>
+          <div class="ledger-desc">Retail locations supported through distribution built out across the Double Black and Acreage/NYCANNA engagements.</div>
         </div>
         <div class="ledger-row">
           <div class="ledger-figure">$16M+</div>
           <div class="ledger-desc">Cultivation, extraction, and manufacturing infrastructure directed in an 18-month window at <span class="place">Casa Verde Farms</span>, NY.</div>
         </div>
         <div class="ledger-row">
-          <div class="ledger-figure">100+ SKUs</div>
+          <div class="ledger-figure">200+ SKUs</div>
           <div class="ledger-desc">Cannabis products commercialized across flower, concentrate, vape, pre-roll, and infused categories over the course of a career.</div>
         </div>
       </div>
@@ -440,11 +464,11 @@
       </div>
       <div class="reveal">
         <div class="work-item">
-          <div class="work-period">2024 — Present</div>
+          <div class="work-period">2024 — 2026</div>
           <div class="work-body">
             <h3>Casa Verde Farms</h3>
             <div class="role">Vice President of Processing · Wellsville, NY</div>
-            <p>Commissioned one of the first Comerg 50L R-134a solventless systems in the New York licensed market and authored the technical documentation that secured OCM approval for it. Directed $16M+ in cultivation, extraction, and manufacturing infrastructure over 18 months, scaling weekly production value past $150,000 during initial commercialization.</p>
+            <p>Provide executive oversight for cultivation, extraction, post-harvest, manufacturing, packaging, and quality across a multi-license New York organization of 65+ team members. Commissioned one of the first Comerg 50L R-134a solventless systems in the New York licensed market and authored the technical documentation that secured OCM approval for it. Directed $16M+ in infrastructure investment while scaling projected annual revenue from $6M toward $14M+, managing a labor budget exceeding $2.5M, and passing $150,000 in weekly production value during initial commercialization.</p>
           </div>
         </div>
         <div class="work-item">
@@ -452,7 +476,7 @@
           <div class="work-body">
             <h3>Acreage Holdings / NYCANNA</h3>
             <div class="role">Director of Production · Syracuse, NY</div>
-            <p>Led extraction and manufacturing through New York's transition to adult-use, supporting $15–25M in annual revenue. Commercialized 100+ products and oversaw cultivation across nine grow rooms totaling 15,000 plants — while cutting labor requirements roughly 25% and adding three new production lines.</p>
+            <p>Directed cross-functional operations for 100+ employees across cultivation, extraction, manufacturing, and retail support, supporting ~$20M in annual revenue through New York's transition to adult-use. Oversaw 44,000 sq ft of single-, dual-, and triple-tier indoor canopy — nine grow rooms sustaining 15,000+ plants and producing roughly 18,000 lbs of cannabis annually — while commercializing 100+ products across four new lines and 25+ new SKUs.</p>
           </div>
         </div>
         <div class="work-item">
@@ -460,7 +484,7 @@
           <div class="work-body">
             <h3>Double Black Cannabis</h3>
             <div class="role">Chief Science &amp; Technology Officer · Carbondale / Rifle, CO</div>
-            <p>Ran all extraction, manufacturing, and technology operations for a $12–15M vertically integrated Colorado producer — 20,000+ units weekly across 140+ SKUs into 700+ retail doors, including three Connoisseur Cup wins. Restructured through COVID while holding ~50% of pre-pandemic output at ~90% fewer labor hours.</p>
+            <p>Directed extraction, manufacturing, and technology operations for a $15M vertically integrated Colorado producer — leading ~90 employees against an $8M+ operating budget, processing ~120 lbs of biomass daily into 20,000+ finished units weekly across 140+ SKUs and 700+ retail doors, including three Connoisseur Cup wins. Restructured through COVID while holding ~50% of pre-pandemic output at ~90% fewer labor hours.</p>
           </div>
         </div>
         <div class="work-item">
