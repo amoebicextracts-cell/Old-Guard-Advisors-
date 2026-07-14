@@ -13,12 +13,8 @@
   :root{
     --void:#0c0e09;
     --panel:#14170f;
-    --panel-2:#191d13;
     --gold:#c9a24b;
     --gold-bright:#e8c878;
-    --green-deep:#2f4a2e;
-    --green-glow:#7a9c68;
-    --amber:#d89b3c;
     --ink:#e8e4d8;
     --ink-dim:#a39c88;
     --ink-faint:#6e6858;
@@ -29,54 +25,34 @@
     --utility: 'Inter', -apple-system, sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
   body{
-    background:var(--void);
-    color:var(--ink);
-    font-family:var(--serif);
-    font-size:18px;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
+    background:var(--void); color:var(--ink); font-family:var(--serif);
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
   }
-  ::selection{background:var(--gold); color:var(--void);}
   a{color:inherit;}
   img{max-width:100%; display:block;}
   .wrap{max-width:1200px; margin:0 auto; padding:0 32px;}
 
   header.nav{
     position:fixed; top:0; left:0; right:0; z-index:50;
-    background:rgba(12,14,9,0.92);
-    backdrop-filter:blur(10px);
+    background:rgba(12,14,9,0.92); backdrop-filter:blur(10px);
     border-bottom:1px solid rgba(201,162,75,0.25);
   }
-  .nav-inner{
-    max-width:1200px; margin:0 auto; padding:16px 32px;
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .nav-brand{
-    display:flex; align-items:center; gap:12px;
-    font-family:var(--display); font-size:15px; letter-spacing:0.14em;
-    text-decoration:none; color:var(--ink);
-  }
+  .nav-inner{max-width:1200px; margin:0 auto; padding:16px 32px; display:flex; align-items:center; justify-content:space-between;}
+  .nav-brand{display:flex; align-items:center; gap:12px; font-family:var(--display); font-size:15px; letter-spacing:0.14em; text-decoration:none; color:var(--ink);}
   .nav-brand img{height:38px; width:38px; object-fit:contain;}
   .nav-links{display:flex; gap:36px; list-style:none; font-family:var(--utility); font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase;}
   .nav-links a{text-decoration:none; color:var(--ink-dim); transition:color .25s;}
   .nav-links a:hover, .nav-links a.current{color:var(--gold-bright);}
   @media (max-width:760px){ .nav-links{display:none;} }
 
-  .page-hero{padding:150px 0 60px;}
-  .eyebrow{
-    font-family:var(--utility); font-size:12px; letter-spacing:0.2em; text-transform:uppercase;
-    color:var(--gold); display:flex; align-items:center; gap:12px; margin-bottom:18px;
-  }
+  .page-hero{padding:150px 0 44px;}
+  .eyebrow{font-family:var(--utility); font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:12px; margin-bottom:18px;}
   .eyebrow::before{content:''; width:26px; height:1px; background:var(--gold);}
   h1{font-family:var(--display); font-weight:600; font-size:clamp(30px,4vw,48px); line-height:1.15; color:var(--ink); max-width:16ch;}
   .page-hero p{margin-top:20px; color:var(--ink-dim); font-size:19px; max-width:60ch;}
 
-  .filter-bar{
-    display:flex; gap:12px; flex-wrap:wrap; padding:20px 0 50px;
-    border-bottom:1px solid var(--rule-soft); margin-bottom:50px;
-  }
+  .filter-bar{display:flex; gap:12px; flex-wrap:wrap; padding:8px 0 40px;}
   .filter-btn{
     font-family:var(--utility); font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
     padding:10px 20px; border:1px solid var(--rule); background:transparent; color:var(--ink-dim);
@@ -85,46 +61,68 @@
   .filter-btn:hover{border-color:var(--gold); color:var(--gold-bright);}
   .filter-btn.active{background:var(--gold); color:var(--void); border-color:var(--gold); font-weight:600;}
 
-  .gallery{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:28px;
-    padding-bottom:120px;
+  .stage-wrap{position:relative; width:100%;}
+  .stage{
+    position:relative; width:100%; height:78vh; max-height:760px; min-height:380px;
+    overflow:hidden; border:1px solid var(--rule); background:var(--panel);
   }
-  @media (max-width:900px){ .gallery{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:600px){ .gallery{grid-template-columns:1fr;} }
+  .stage img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    opacity:0; transition:opacity 1.1s ease;
+  }
+  .stage img.active{opacity:1;}
+  .stage-nav{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:5;
+    width:48px; height:48px; border-radius:50%; border:1px solid rgba(232,228,216,0.3);
+    background:rgba(12,14,9,0.5); backdrop-filter:blur(6px); color:var(--ink);
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    font-size:18px; transition:border-color .2s, background .2s;
+  }
+  .stage-nav:hover{border-color:var(--gold); background:rgba(12,14,9,0.75);}
+  .stage-prev{left:20px;} .stage-next{right:20px;}
+  @media (max-width:640px){ .stage-nav{width:38px; height:38px; font-size:15px;} }
 
-  .g-item{
-    border:1px solid var(--rule-soft); overflow:hidden; cursor:pointer;
-    opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease, border-color .25s;
-  }
-  .g-item.in{opacity:1; transform:translateY(0);}
-  .g-item:hover{border-color:var(--gold);}
-  .g-item img{width:100%; height:280px; object-fit:cover; display:block; transition:transform .5s ease;}
-  .g-item:hover img{transform:scale(1.04);}
-  .g-caption{padding:14px 16px; font-family:var(--utility); font-size:12px; color:var(--ink-faint); letter-spacing:0.02em;}
-  .g-caption strong{color:var(--ink-dim); font-weight:600; display:block; margin-bottom:2px; font-family:var(--serif); font-size:14px;}
+  .stage-progress{display:flex; gap:6px; margin-top:20px; padding:0 2px;}
+  .prog-bar{flex:1; height:2px; background:var(--rule-soft); position:relative; cursor:pointer; overflow:hidden;}
+  .prog-fill{position:absolute; left:0; top:0; bottom:0; width:0%; background:var(--gold);}
+  .prog-bar.done .prog-fill{width:100%; transition:none;}
+  .prog-bar.active .prog-fill{transition:width linear;}
 
-  .g-item.hidden{display:none;}
-
-  /* Lightbox */
-  .lightbox{
-    position:fixed; inset:0; background:rgba(8,9,6,0.96); z-index:100;
-    display:none; align-items:center; justify-content:center; padding:40px;
-    flex-direction:column;
+  .filmstrip{
+    display:flex; gap:10px; overflow-x:auto; padding:36px 2px 100px;
+    scrollbar-width:thin; scrollbar-color:var(--rule) transparent;
   }
-  .lightbox.open{display:flex;}
-  .lightbox img{max-width:90vw; max-height:78vh; object-fit:contain; border:1px solid var(--rule);}
-  .lightbox-caption{font-family:var(--utility); font-size:13px; color:var(--ink-dim); margin-top:20px; text-align:center;}
-  .lightbox-close{
-    position:absolute; top:28px; right:38px; font-family:var(--utility); font-size:14px;
-    color:var(--ink-dim); background:none; border:1px solid var(--rule); padding:10px 18px;
-    cursor:pointer; letter-spacing:0.08em; text-transform:uppercase;
+  .filmstrip::-webkit-scrollbar{height:6px;}
+  .filmstrip::-webkit-scrollbar-thumb{background:var(--rule); border-radius:3px;}
+  .film-item{
+    flex:0 0 auto; width:120px; height:80px; cursor:pointer;
+    border:1px solid transparent; opacity:0.5; transition:opacity .25s, border-color .25s;
   }
-  .lightbox-close:hover{color:var(--gold-bright); border-color:var(--gold);}
+  .film-item img{width:100%; height:100%; object-fit:cover;}
+  .film-item:hover{opacity:0.85;}
+  .film-item.active{opacity:1; border-color:var(--gold);}
 
   footer{
     border-top:1px solid var(--rule-soft); padding:40px 0;
     display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
     font-family:var(--utility); font-size:12px; color:var(--ink-faint); letter-spacing:0.04em;
+  }
+
+  .lightbox{
+    position:fixed; inset:0; background:rgba(6,7,4,0.97); z-index:100;
+    display:none; align-items:center; justify-content:center; padding:5vh 5vw;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:100%; max-height:100%; object-fit:contain;}
+  .lightbox-close{
+    position:absolute; top:28px; right:38px; width:44px; height:44px; border-radius:50%;
+    border:1px solid rgba(232,228,216,0.3); background:rgba(12,14,9,0.5);
+    color:var(--ink); font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .lightbox-close:hover{border-color:var(--gold); color:var(--gold-bright);}
+
+  @media (prefers-reduced-motion: reduce){
+    .stage img{transition:none;}
   }
 </style>
 </head>
@@ -132,10 +130,7 @@
 
 <header class="nav">
   <div class="nav-inner">
-    <a class="nav-brand" href="index.html">
-      <img src="images/logo.webp" alt="">
-      OLD&nbsp;GUARD
-    </a>
+    <a class="nav-brand" href="index.html"><img src="images/logo.webp" alt=""> OLD&nbsp;GUARD</a>
     <ul class="nav-links">
       <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#services">Advisory</a></li>
@@ -161,7 +156,15 @@
       <button class="filter-btn" data-filter="extraction">Extraction &amp; Concentrates</button>
     </div>
 
-    <div class="gallery" id="gallery"></div>
+    <div class="stage-wrap">
+      <div class="stage" id="stage">
+        <button class="stage-nav stage-prev" id="prevBtn" aria-label="Previous">‹</button>
+        <button class="stage-nav stage-next" id="nextBtn" aria-label="Next">›</button>
+      </div>
+      <div class="stage-progress" id="progress"></div>
+    </div>
+
+    <div class="filmstrip" id="filmstrip"></div>
   </div>
 </main>
 
@@ -173,89 +176,165 @@
 </footer>
 
 <div class="lightbox" id="lightbox">
-  <button class="lightbox-close" id="lightboxClose">Close ✕</button>
+  <button class="lightbox-close" id="lightboxClose">✕</button>
   <img id="lightboxImg" src="" alt="">
-  <div class="lightbox-caption" id="lightboxCaption"></div>
 </div>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  const items = [
-    {src:'portfolio-images/cult-01.jpg', cat:'cultivation', title:'Flowering canopy row', sub:'New York licensed facility'},
-    {src:'portfolio-images/cult-02.jpg', cat:'cultivation', title:'Early veg canopy', sub:'New York licensed facility'},
-    {src:'portfolio-images/cult-03.jpg', cat:'cultivation', title:'Trellised veg row', sub:'New York licensed facility'},
-    {src:'portfolio-images/cult-04.jpg', cat:'cultivation', title:'Late-flower canopy row', sub:'New York licensed facility'},
-    {src:'portfolio-images/cult-05.jpg', cat:'cultivation', title:'Frosted cola, macro detail', sub:'New York licensed facility'},
-    {src:'portfolio-images/cult-06.jpg', cat:'cultivation', title:'Single cola, soft light', sub:'New York licensed facility'},
-    {src:'portfolio-images/cult-07.jpg', cat:'cultivation', title:'Cola detail against full canopy', sub:'New York licensed facility'},
-    {src:'portfolio-images/cult-08.jpg', cat:'cultivation', title:'Frosted cola, extreme macro', sub:'New York licensed facility'},
-    {src:'portfolio-images/cult-09.jpg', cat:'cultivation', title:'Cola detail, canopy backdrop', sub:'New York licensed facility'},
-    {src:'portfolio-images/cult-10.jpg', cat:'cultivation', title:'Cola cluster, dense canopy', sub:'New York licensed facility'},
-    {src:'portfolio-images/cult-11.jpg', cat:'cultivation', title:'Purple-phenotype cola, pink spectrum', sub:'New York licensed facility'},
-    {src:'portfolio-images/cult-12.jpg', cat:'cultivation', title:'Purple cola, deep canopy view', sub:'New York licensed facility'},
-    {src:'portfolio-images/cult-13.jpg', cat:'cultivation', title:'Dark purple cola, full spectrum LED', sub:'New York licensed facility'},
-    {src:'portfolio-images/cult-14.jpg', cat:'cultivation', title:'Purple cola, deep canopy', sub:'New York licensed facility'},
-    {src:'portfolio-images/cult-15.jpg', cat:'cultivation', title:'Cola under warm light', sub:'Double Black Cannabis'},
-    {src:'portfolio-images/cult-16.jpg', cat:'cultivation', title:'Purple cola, trellis detail', sub:'Double Black Cannabis'},
-    {src:'portfolio-images/cult-17.jpg', cat:'cultivation', title:'Backlit trichome macro', sub:'Double Black Cannabis'},
-    {src:'portfolio-images/cult-18.jpg', cat:'cultivation', title:'Athena fertigation batching', sub:'New York licensed facility'},
-    {src:'portfolio-images/ext-01.jpg', cat:'extraction', title:'Live resin splatter detail', sub:'Double Black Cannabis'},
-    {src:'portfolio-images/ext-02.jpg', cat:'extraction', title:'Bulk powder, packed jars', sub:'Double Black Cannabis'},
-    {src:'portfolio-images/ext-03.jpg', cat:'extraction', title:'Wash cycle in progress', sub:'Double Black Cannabis'},
-    {src:'portfolio-images/ext-04.jpg', cat:'extraction', title:'Backlit extract vessel', sub:'Double Black Cannabis'},
-    {src:'portfolio-images/ext-05.jpg', cat:'extraction', title:'Diamond isolate, hand detail', sub:'Double Black Cannabis'},
-    {src:'portfolio-images/ext-06.jpg', cat:'extraction', title:'Terp sauce, formed sphere', sub:'Double Black Cannabis'},
+  const allItems = [
+    {src:'portfolio-images/cult-01.jpg', cat:'cultivation'},
+    {src:'portfolio-images/cult-02.jpg', cat:'cultivation'},
+    {src:'portfolio-images/cult-03.jpg', cat:'cultivation'},
+    {src:'portfolio-images/cult-04.jpg', cat:'cultivation'},
+    {src:'portfolio-images/cult-05.jpg', cat:'cultivation'},
+    {src:'portfolio-images/cult-06.jpg', cat:'cultivation'},
+    {src:'portfolio-images/cult-07.jpg', cat:'cultivation'},
+    {src:'portfolio-images/cult-08.jpg', cat:'cultivation'},
+    {src:'portfolio-images/cult-09.jpg', cat:'cultivation'},
+    {src:'portfolio-images/cult-10.jpg', cat:'cultivation'},
+    {src:'portfolio-images/cult-11.jpg', cat:'cultivation'},
+    {src:'portfolio-images/cult-12.jpg', cat:'cultivation'},
+    {src:'portfolio-images/cult-13.jpg', cat:'cultivation'},
+    {src:'portfolio-images/cult-14.jpg', cat:'cultivation'},
+    {src:'portfolio-images/cult-15.jpg', cat:'cultivation'},
+    {src:'portfolio-images/cult-16.jpg', cat:'cultivation'},
+    {src:'portfolio-images/cult-17.jpg', cat:'cultivation'},
+    {src:'portfolio-images/cult-18.jpg', cat:'cultivation'},
+    {src:'portfolio-images/ext-01.jpg', cat:'extraction'},
+    {src:'portfolio-images/ext-02.jpg', cat:'extraction'},
+    {src:'portfolio-images/ext-03.jpg', cat:'extraction'},
+    {src:'portfolio-images/ext-04.jpg', cat:'extraction'},
+    {src:'portfolio-images/ext-05.jpg', cat:'extraction'},
+    {src:'portfolio-images/ext-06.jpg', cat:'extraction'},
   ];
 
-  const gallery = document.getElementById('gallery');
-  items.forEach((item, i) => {
-    const div = document.createElement('div');
-    div.className = 'g-item';
-    div.dataset.cat = item.cat;
-    div.innerHTML = `
-      <img src="${item.src}" alt="${item.title}" loading="lazy">
-      <div class="g-caption"><strong>${item.title}</strong>${item.sub}</div>
-    `;
-    div.addEventListener('click', () => openLightbox(item));
-    gallery.appendChild(div);
+  const stage = document.getElementById('stage');
+  const progressEl = document.getElementById('progress');
+  const filmstripEl = document.getElementById('filmstrip');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+
+  let current = [...allItems];
+  let idx = 0;
+  let timer = null;
+  const DURATION = 4800;
+
+  function buildStage(){
+    stage.querySelectorAll('img').forEach(el=>el.remove());
+    current.forEach((item, i) => {
+      const img = document.createElement('img');
+      img.src = item.src;
+      img.loading = i === 0 ? 'eager' : 'lazy';
+      img.addEventListener('click', () => openLightbox(item.src));
+      stage.appendChild(img);
+    });
+  }
+
+  function buildProgress(){
+    progressEl.innerHTML = '';
+    current.forEach((_, i) => {
+      const bar = document.createElement('div');
+      bar.className = 'prog-bar';
+      bar.innerHTML = '<div class="prog-fill"></div>';
+      bar.addEventListener('click', () => goTo(i));
+      progressEl.appendChild(bar);
+    });
+  }
+
+  function buildFilmstrip(){
+    filmstripEl.innerHTML = '';
+    current.forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'film-item';
+      div.innerHTML = '<img src="' + item.src + '" loading="lazy" alt="">';
+      div.addEventListener('click', () => goTo(i));
+      filmstripEl.appendChild(div);
+    });
+  }
+
+  function render(){
+    const imgs = stage.querySelectorAll('img');
+    imgs.forEach((img, i) => img.classList.toggle('active', i === idx));
+    const bars = progressEl.querySelectorAll('.prog-bar');
+    bars.forEach((bar, i) => {
+      bar.classList.remove('active','done');
+      const fill = bar.querySelector('.prog-fill');
+      fill.style.transition = 'none';
+      fill.style.width = '0%';
+      if (i < idx) bar.classList.add('done');
+    });
+    const films = filmstripEl.querySelectorAll('.film-item');
+    films.forEach((f, i) => {
+      f.classList.toggle('active', i === idx);
+      if (i === idx) f.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+    });
+    requestAnimationFrame(()=>{
+      const activeBar = bars[idx];
+      if (activeBar){
+        activeBar.classList.add('active');
+        const fill = activeBar.querySelector('.prog-fill');
+        requestAnimationFrame(()=>{
+          fill.style.transition = 'width ' + DURATION + 'ms linear';
+          fill.style.width = '100%';
+        });
+      }
+    });
+  }
+
+  function goTo(i){
+    idx = (i + current.length) % current.length;
+    render();
+    resetTimer();
+  }
+  function next(){ goTo(idx+1); }
+  function prev(){ goTo(idx-1); }
+
+  function resetTimer(){
+    clearInterval(timer);
+    timer = setInterval(next, DURATION);
+  }
+
+  function rebuild(filter){
+    current = filter === 'all' ? [...allItems] : allItems.filter(function(i){ return i.cat === filter; });
+    idx = 0;
+    buildStage();
+    buildProgress();
+    buildFilmstrip();
+    render();
+    resetTimer();
+  }
+
+  function openLightbox(src){
+    lightboxImg.src = src;
+    lightbox.classList.add('open');
+    clearInterval(timer);
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    resetTimer();
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', next);
+  document.getElementById('prevBtn').addEventListener('click', prev);
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e){ if(e.target===lightbox) closeLightbox(); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight' && !lightbox.classList.contains('open')) next();
+    if (e.key === 'ArrowLeft' && !lightbox.classList.contains('open')) prev();
   });
 
-  // Scroll reveal
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, {threshold:0.1});
-  document.querySelectorAll('.g-item').forEach(el=>io.observe(el));
-
-  // Filtering
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.filter-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
       btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      document.querySelectorAll('.g-item').forEach(item => {
-        if (filter === 'all' || item.dataset.cat === filter) {
-          item.classList.remove('hidden');
-        } else {
-          item.classList.add('hidden');
-        }
-      });
+      rebuild(btn.dataset.filter);
     });
   });
 
-  // Lightbox
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightboxImg');
-  const lightboxCaption = document.getElementById('lightboxCaption');
-  function openLightbox(item){
-    lightboxImg.src = item.src;
-    lightboxImg.alt = item.title;
-    lightboxCaption.textContent = item.title + ' — ' + item.sub;
-    lightbox.classList.add('open');
-  }
-  document.getElementById('lightboxClose').addEventListener('click', ()=> lightbox.classList.remove('open'));
-  lightbox.addEventListener('click', (e)=>{ if(e.target===lightbox) lightbox.classList.remove('open'); });
-  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') lightbox.classList.remove('open'); });
+  rebuild('all');
 </script>
 
 </body>
