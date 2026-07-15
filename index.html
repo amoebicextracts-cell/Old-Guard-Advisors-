@@ -192,6 +192,13 @@
     padding:14px 18px; border-top:1px solid var(--rule-soft);
   }
 
+  .plan-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:40px;}
+  @media (max-width:800px){ .plan-grid{grid-template-columns:1fr; gap:36px;} }
+  .plan-step{border-top:1px solid var(--rule); padding-top:22px;}
+  .plan-num{font-family:var(--display); font-size:15px; color:var(--gold); letter-spacing:0.1em; margin-bottom:14px;}
+  .plan-step h3{font-family:var(--display); font-size:20px; font-weight:600; color:var(--ink); margin-bottom:12px;}
+  .plan-step p{color:var(--ink-dim); font-size:16.5px;}
+
   /* ---------- Services ---------- */
   .services{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2px; background:var(--rule-soft); border:1px solid var(--rule-soft);}
   @media (max-width:760px){ .services{grid-template-columns:1fr;} }
@@ -293,6 +300,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#services">Advisory</a></li>
       <li><a href="#record">Record</a></li>
+      <li><a href="#plan">How It Works</a></li>
       <li><a href="#work">Experience</a></li>
       <li><a href="portfolio.html">Portfolio</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -307,46 +315,14 @@
     <div class="hero-inner">
       <img class="hero-logo" src="images/logo.webp" alt="Old Guard Cannabis Advisors">
       <div class="hero-eyebrow">Cannabis Extraction &amp; Operations Advisory</div>
-      <h1>Before it was legal, it was a craft. <em>Old Guard still runs it that way.</em></h1>
-      <p class="lede">Twenty years turning cannabis operations into disciplined, compliant, award-winning production — from bubble hash on a folding table to GMP-certified extraction floors running six figures a week.</p>
+      <h1>Cannabis compliance shouldn't cost you the craft.</h1>
+      <p class="lede">Old Guard Cannabis Advisors helps licensed cultivators and processors build extraction, cultivation, and compliance systems that pass every audit and scale profitably — led by an operator who has spent 20 years doing the work himself, not consulting from the sidelines.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#contact">Start a conversation</a>
-        <a class="btn btn-ghost" href="#work">See the record</a>
+        <a class="btn btn-ghost" href="#record">See the track record</a>
       </div>
     </div>
   </section>
-
-  <section id="about">
-    <div class="wrap">
-      <div class="about-grid reveal">
-        <div>
-          <div class="about-mark">
-            <div class="num">20+</div>
-            <div class="label">Years in cultivation, extraction &amp; operations</div>
-          </div>
-          <div class="about-mark">
-            <div class="num">15,000+</div>
-            <div class="label">Plants under cultivation management at peak</div>
-          </div>
-          <div class="about-mark">
-            <div class="num">4</div>
-            <div class="label">States licensed &amp; commissioned — CO · OR · WA · NY</div>
-          </div>
-        </div>
-        <div class="about-copy">
-          <div class="eyebrow">The Craft</div>
-          <p><strong>Old Guard Cannabis Advisors is built around one person's unusual path through this industry.</strong> Fifteen years of hands-on hash-making and extraction craft before licensure existed — bubble hash, ice water, full melt, rosin — followed by a decade directing cultivation, extraction, and manufacturing for some of the largest vertically integrated operators in Colorado and New York, including 44,000 sq ft of single-, dual-, and triple-tier indoor canopy sustaining 15,000+ plants at any given time.</p>
-          <p>Most consultants know the regulations. Fewer have actually run the wash, walked a canopy at 6am to catch a flip date, or stood in front of a GMP audit defending SOPs they wrote themselves. This practice is built on having done all of it — Connoisseur Cup-winning concentrate production on one side of the ledger, $16M+ in directed infrastructure builds on the other.</p>
-          <p>That combination — artisan judgment plus operational rigor, cultivation through extraction — is what Old Guard brings to every engagement: canopy design, facility startup, extraction systems, quality frameworks, and the commercialization work that turns a compliant facility into a profitable one.</p>
-        </div>
-      </div>
-      <figure class="about-photo reveal">
-        <img src="images/about-hero.jpg" alt="Indoor cannabis cultivation canopy under warm grow lights">
-        <figcaption>44,000 sq ft of managed indoor canopy, New York</figcaption>
-      </figure>
-    </div>
-  </section>
-
   <section id="services" class="alt">
     <div class="wrap">
       <div class="section-head reveal">
@@ -388,7 +364,6 @@
       </div>
     </div>
   </section>
-
   <section id="record">
     <div class="wrap">
       <div class="section-head reveal">
@@ -428,7 +403,6 @@
       </div>
     </div>
   </section>
-
   <section class="alt">
     <div class="wrap">
       <div class="section-head reveal">
@@ -483,7 +457,64 @@
       </figure>
     </div>
   </section>
-
+  <section id="plan" class="alt">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">How It Works</div>
+        <h2>A clear path from first call to compliant, scaling operations</h2>
+        <p>No lengthy proposals before you know if this is a fit. Three steps, starting with a direct conversation.</p>
+      </div>
+      <div class="plan-grid reveal">
+        <div class="plan-step">
+          <div class="plan-num">01</div>
+          <h3>Start a Conversation</h3>
+          <p>A direct, no-pressure conversation about where your operation stands today — what's working, what's not, and where the real risk actually sits.</p>
+        </div>
+        <div class="plan-step">
+          <div class="plan-num">02</div>
+          <h3>Get an Honest Assessment</h3>
+          <p>An on-the-ground look at your canopy, extraction systems, and compliance posture — the same rigor used to defend Old Guard's own GMP audits.</p>
+        </div>
+        <div class="plan-step">
+          <div class="plan-num">03</div>
+          <h3>Execute the Plan</h3>
+          <p>A clear roadmap to close the gaps, scale output, and turn a compliant facility into a genuinely profitable one.</p>
+        </div>
+      </div>
+      <div style="margin-top:48px;">
+        <a class="btn btn-primary" href="#contact">Start a conversation</a>
+      </div>
+    </div>
+  </section>
+  <section id="about">
+    <div class="wrap">
+      <div class="about-grid reveal">
+        <div>
+          <div class="about-mark">
+            <div class="num">20+</div>
+            <div class="label">Years in cultivation, extraction &amp; operations</div>
+          </div>
+          <div class="about-mark">
+            <div class="num">15,000+</div>
+            <div class="label">Plants under cultivation management at peak</div>
+          </div>
+          <div class="about-mark">
+            <div class="num">4</div>
+            <div class="label">States licensed &amp; commissioned — CO · OR · WA · NY</div>
+          </div>
+        </div>
+        <div class="about-copy">
+          <div class="eyebrow">The Guide</div>
+          <p><strong>Old Guard Cannabis Advisors is built around one person's unusual path through this industry.</strong> Fifteen years of hands-on hash-making and extraction craft before licensure existed, followed by a decade directing cultivation, extraction, and manufacturing for some of the largest vertically integrated operators in Colorado and New York — including 44,000 sq ft of indoor canopy sustaining 15,000+ plants at any given time.</p>
+          <p>Most consultants know the regulations. Fewer have actually run the wash, walked a canopy at 6am to catch a flip date, or stood in front of a GMP audit defending SOPs they wrote themselves. That combination — artisan judgment plus operational rigor — is what Old Guard brings to every engagement.</p>
+        </div>
+      </div>
+      <figure class="about-photo reveal">
+        <img src="images/about-hero.jpg" alt="Indoor cannabis cultivation canopy under warm grow lights">
+        <figcaption>44,000 sq ft of managed indoor canopy, New York</figcaption>
+      </figure>
+    </div>
+  </section>
   <section id="work">
     <div class="wrap">
       <div class="section-head reveal">
@@ -534,7 +565,6 @@
       </div>
     </div>
   </section>
-
   <section class="alt">
     <div class="wrap">
       <div class="callout reveal">
@@ -546,7 +576,6 @@
       </div>
     </div>
   </section>
-
   <section id="contact">
     <div class="wrap">
       <div class="section-head reveal">
