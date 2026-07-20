@@ -58,6 +58,19 @@ Both HTML files reference images with relative paths like `images/logo.webp` and
   folded into Record's ledger instead — don't re-add a separate Experience
   section without revisiting this reasoning first.
 
+## Contact form
+The Contact section (`#contact`) has a real inquiry form (`#inquiry-form`: Name,
+Email, State, "what do you need help with") above the direct email/LinkedIn/
+Instagram links — both "Start a conversation" CTA buttons anchor straight to
+`#inquiry-form`. It submits via a client-side `fetch()` POST to Web3Forms
+(`https://api.web3forms.com/submit`) — no backend, matching this site's static
+setup. The access key lives in plaintext as a JS const (`WEB3FORMS_ACCESS_KEY`)
+— that's intentional, not a leak; Web3Forms is designed to have its key exposed
+client-side since there's no server to hide it behind. Free tier is 250
+submissions/month, no dashboard account required. `resinops-website` uses the
+exact same pattern for its own waitlist form — keep both in sync if this
+approach ever changes (e.g. switching form providers).
+
 ## Related repos (separate projects, don't confuse)
 - `resinops-website` (github.com/amoebicextracts-cell/resinops-website) — the
   ResinOps SaaS marketing site, cross-links to this one but is a fully separate
