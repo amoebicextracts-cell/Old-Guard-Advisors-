@@ -266,6 +266,36 @@
   .contact-line .v a{text-decoration:none; color:var(--ink); font-size:17px; font-family:var(--serif); transition:color .2s;}
   .contact-line .v a:hover{color:var(--gold-bright);}
 
+  /* ---------- Inquiry form ---------- */
+  .inquiry-form{
+    border:1px solid var(--rule); padding:40px 36px; margin-bottom:56px;
+    display:grid; grid-template-columns:1fr 1fr; gap:22px;
+  }
+  @media (max-width:760px){ .inquiry-form{grid-template-columns:1fr; padding:28px 24px;} }
+  .inquiry-field label{
+    display:block; font-family:var(--utility); font-size:12px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--ink-faint); margin-bottom:9px;
+  }
+  .inquiry-field input, .inquiry-field select{
+    width:100%; background:var(--panel-2); border:1px solid var(--rule); color:var(--ink);
+    font-family:var(--serif); font-size:16px; padding:12px 14px; border-radius:2px;
+    outline:none; transition:border-color .2s;
+  }
+  .inquiry-field select{cursor:pointer;}
+  .inquiry-field input:focus, .inquiry-field select:focus{border-color:var(--gold);}
+  .inquiry-full{grid-column:1/-1;}
+  .inquiry-error{display:none; grid-column:1/-1; font-size:13px; color:var(--amber);}
+  .inquiry-submit{border:none; cursor:pointer; font-family:inherit;}
+  .inquiry-submit:disabled{opacity:0.6; cursor:default;}
+  .inquiry-success{
+    display:none; border:1px solid var(--rule); padding:32px 36px; margin-bottom:56px;
+    text-align:center; color:var(--ink); font-size:17px;
+  }
+  .contact-divider{
+    font-family:var(--utility); font-size:12px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--ink-faint); margin-bottom:24px;
+  }
+
   footer{
     border-top:1px solid var(--rule-soft); padding:40px 0;
     display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
@@ -304,7 +334,7 @@
       <h1>Cannabis compliance shouldn't cost you the craft.</h1>
       <p class="lede">Old Guard Cannabis Advisors helps licensed cultivators and processors build extraction, cultivation, and compliance systems that pass every audit and scale profitably — led by an operator who has spent 20 years doing the work himself, not consulting from the sidelines.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#contact">Start a conversation</a>
+        <a class="btn btn-primary" href="#inquiry-form">Start a conversation</a>
         <a class="btn btn-ghost" href="#record">See the track record</a>
       </div>
     </div>
@@ -476,7 +506,7 @@
         </div>
       </div>
       <div style="margin-top:48px;">
-        <a class="btn btn-primary" href="#contact">Start a conversation</a>
+        <a class="btn btn-primary" href="#inquiry-form">Start a conversation</a>
       </div>
     </div>
   </section>
@@ -525,8 +555,43 @@
       <div class="section-head reveal">
         <div class="eyebrow">Get In Touch</div>
         <h2>Start a conversation</h2>
-        <p>Facility startups, extraction system selection, compliance builds, or a second set of experienced eyes on an operation already running — reach out directly.</p>
+        <p>Facility startups, extraction system selection, compliance builds, or a second set of experienced eyes on an operation already running — send the details below or reach out directly.</p>
       </div>
+
+      <div class="inquiry-form reveal" id="inquiry-form">
+        <div class="inquiry-field">
+          <label for="inq-name">Name</label>
+          <input type="text" id="inq-name" name="name" autocomplete="name" required>
+        </div>
+        <div class="inquiry-field">
+          <label for="inq-email">Email</label>
+          <input type="email" id="inq-email" name="email" autocomplete="email" required>
+        </div>
+        <div class="inquiry-field">
+          <label for="inq-state">State</label>
+          <input type="text" id="inq-state" name="state" placeholder="e.g. NY, CO, OR" autocomplete="address-level1">
+        </div>
+        <div class="inquiry-field">
+          <label for="inq-need">What do you need help with?</label>
+          <select id="inq-need" name="need">
+            <option value="">Select one…</option>
+            <option>Facility startup</option>
+            <option>Extraction system selection</option>
+            <option>Compliance build</option>
+            <option>Operational review / second opinion</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="inquiry-error" id="inquiry-error"></div>
+        <div class="inquiry-full">
+          <button class="btn btn-primary inquiry-submit" id="inquiry-submit" type="button" onclick="submitInquiry()">Send inquiry</button>
+        </div>
+      </div>
+      <div class="inquiry-success" id="inquiry-success">
+        ✓ Message received — Alex will follow up directly within 1–2 business days.
+      </div>
+
+      <div class="contact-divider reveal">Or reach out directly</div>
       <div class="contact-inner reveal">
         <div>
           <div class="contact-line"><span class="k">Email</span><span class="v"><a href="mailto:alex@oldguardcannabis.com">alex@oldguardcannabis.com</a></span></div>
@@ -554,6 +619,48 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Inquiry form — POSTs to Web3Forms (no backend of our own needed)
+  const WEB3FORMS_ACCESS_KEY = 'eaa4b3d5-d78d-495c-b646-60be93ecbdfe';
+  async function submitInquiry(){
+    const name = document.getElementById('inq-name').value.trim();
+    const email = document.getElementById('inq-email').value.trim();
+    const state = document.getElementById('inq-state').value.trim();
+    const need = document.getElementById('inq-need').value;
+    const errEl = document.getElementById('inquiry-error');
+    const btn = document.getElementById('inquiry-submit');
+
+    if(!name || !email){
+      errEl.textContent = 'Please enter your name and email.';
+      errEl.style.display = 'block';
+      return;
+    }
+    errEl.style.display = 'none';
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    try{
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `Old Guard inquiry — ${name}`,
+          from_name: 'Old Guard Cannabis Advisors — Website',
+          name, email, state, need,
+        }),
+      });
+      const data = await res.json();
+      if(!data.success) throw new Error(data.message || 'Submission failed');
+      document.getElementById('inquiry-form').style.display = 'none';
+      document.getElementById('inquiry-success').style.display = 'block';
+    }catch(e){
+      errEl.textContent = "Something went wrong sending that — please email alex@oldguardcannabis.com directly.";
+      errEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Send inquiry';
+    }
+  }
 
   // Scroll reveal
   const io = new IntersectionObserver((entries)=>{
