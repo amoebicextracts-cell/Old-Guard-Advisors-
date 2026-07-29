@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The GMP Bill Comes Due — Old Guard Cannabis Advisors</title>
+<meta name="description" content="Why most cannabis operators outside New York aren't ready for real GMP compliance — and where the overhead actually shows up on the P&L.">
+<link rel="icon" href="images/logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0c0e09;
+    --panel:#14170f;
+    --panel-2:#191d13;
+    --gold:#c9a24b;
+    --gold-bright:#e8c878;
+    --green-deep:#2f4a2e;
+    --green-glow:#7a9c68;
+    --amber:#d89b3c;
+    --ink:#e8e4d8;
+    --ink-dim:#a39c88;
+    --ink-faint:#6e6858;
+    --rule:rgba(201,162,75,0.22);
+    --rule-soft:rgba(201,162,75,0.1);
+    --serif: 'Source Serif 4', Georgia, serif;
+    --display: 'Cinzel', 'Times New Roman', serif;
+    --utility: 'Inter', -apple-system, sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--void);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:18px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--gold); color:var(--void);}
+  a{color:var(--gold-bright);}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:1;
+    background-image:
+      radial-gradient(ellipse at 50% 0%, rgba(122,156,104,0.05), transparent 55%),
+      radial-gradient(ellipse at 100% 100%, rgba(201,162,75,0.04), transparent 50%);
+  }
+
+  header.nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(12,14,9,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--rule-soft);
+  }
+  .nav-inner{
+    max-width:1120px; margin:0 auto; padding:16px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-brand{
+    display:flex; align-items:center; gap:12px;
+    font-family:var(--display); font-size:15px; letter-spacing:0.14em;
+    text-decoration:none; color:var(--ink);
+  }
+  .nav-brand img{height:38px; width:38px; object-fit:contain;}
+  .nav-links{display:flex; gap:36px; list-style:none; font-family:var(--utility); font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase;}
+  .nav-links a{text-decoration:none; color:var(--ink-dim); transition:color .25s;}
+  .nav-links a:hover, .nav-links a.current{color:var(--gold-bright);}
+  @media (max-width:760px){ .nav-links{display:none;} }
+
+  /* ---------- Article header ---------- */
+  .article-hero{
+    position:relative; min-height:64vh; display:flex; align-items:flex-end;
+    padding:140px 0 64px; overflow:hidden;
+  }
+  .article-hero-bg{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(100deg, var(--void) 30%, rgba(12,14,9,0.72) 55%, rgba(12,14,9,0.35) 100%),
+      url('blog-images/gmp-readiness-hero.jpg');
+    background-size:cover; background-position:70% center;
+    opacity:0.95;
+  }
+  .article-hero-inner{position:relative; z-index:2; max-width:1120px; margin:0 auto; padding:0 32px; width:100%;}
+  .eyebrow{
+    font-family:var(--utility); font-size:12px; letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--gold); display:flex; align-items:center; gap:12px; margin-bottom:18px;
+  }
+  .eyebrow::before{content:''; width:26px; height:1px; background:var(--gold);}
+  .article-hero h1{
+    font-family:var(--display); font-weight:600; font-size:clamp(30px,4.6vw,52px);
+    line-height:1.14; color:var(--ink); max-width:18ch;
+  }
+  .article-meta{
+    margin-top:24px; font-family:var(--utility); font-size:12.5px; letter-spacing:0.05em;
+    color:var(--ink-dim); text-transform:uppercase;
+  }
+
+  /* ---------- Article body ---------- */
+  .article-body{padding:80px 0 60px;}
+  .article-col{max-width:700px; margin:0 auto;}
+  .article-col p{color:var(--ink); font-size:19px; line-height:1.75; margin-bottom:26px;}
+  .article-col h2{
+    font-family:var(--display); font-weight:600; font-size:clamp(24px,3vw,32px);
+    color:var(--gold-bright); margin:56px 0 22px; line-height:1.25;
+  }
+  .article-col ul{margin:0 0 26px 0; padding-left:0; list-style:none;}
+  .article-col li{
+    position:relative; padding-left:28px; margin-bottom:16px;
+    color:var(--ink); font-size:18px; line-height:1.65;
+  }
+  .article-col li::before{
+    content:''; position:absolute; left:0; top:11px; width:8px; height:1px; background:var(--gold);
+  }
+  .article-col li strong{color:var(--gold-bright);}
+  .pull{
+    border-left:2px solid var(--gold); padding:6px 0 6px 28px; margin:44px 0;
+    font-family:var(--serif); font-style:italic; font-size:23px; color:var(--gold-bright); line-height:1.5;
+  }
+  .article-col hr{border:none; border-top:1px solid var(--rule); margin:56px 0;}
+  .article-col .signoff{color:var(--ink-dim); font-size:17px; font-style:italic;}
+
+  .article-cta{
+    max-width:700px; margin:0 auto; padding:44px; border:1px solid var(--rule);
+    background:var(--panel); text-align:left;
+  }
+  .article-cta h3{font-family:var(--display); font-weight:600; font-size:24px; color:var(--ink); margin-bottom:14px;}
+  .article-cta p{color:var(--ink-dim); font-size:17px; margin-bottom:26px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--utility); font-size:13px; letter-spacing:0.08em; text-transform:uppercase;
+    padding:15px 28px; text-decoration:none; border-radius:2px;
+    transition:transform .25s, background .25s, border-color .25s;
+  }
+  .btn-primary{background:var(--gold); color:var(--void); font-weight:600;}
+  .btn-primary:hover{background:var(--gold-bright); transform:translateY(-1px);}
+
+  .back-link{
+    display:block; max-width:700px; margin:0 auto 40px; font-family:var(--utility);
+    font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-dim); text-decoration:none;
+  }
+  .back-link:hover{color:var(--gold-bright);}
+
+  footer{
+    padding:40px 0; border-top:1px solid var(--rule-soft); margin-top:100px;
+    font-family:var(--utility); font-size:12.5px; color:var(--ink-faint); letter-spacing:0.04em;
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html"><img src="images/logo.webp" alt=""> OLD&nbsp;GUARD</a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#services">Advisory</a></li>
+      <li><a href="index.html#record">Record</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="blog.html" class="current">Blog</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="https://calendly.com/alex-oldguardcannabis/30min" target="_blank" rel="noopener">Book a Call</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section class="article-hero">
+    <div class="article-hero-bg"></div>
+    <div class="article-hero-inner">
+      <div class="eyebrow">Compliance / Facility Operations</div>
+      <h1>The GMP Bill Comes Due</h1>
+      <div class="article-meta">Old Guard Cannabis Advisors</div>
+    </div>
+  </section>
+
+  <section class="article-body">
+    <a class="back-link" href="blog.html">← Back to all posts</a>
+    <div class="article-col">
+
+      <p>Talk to operators outside New York about GMP and you'll usually hear the same thing: "We're basically already doing that." Then you walk the floor, pull a batch record, and ask where the deviation log is.</p>
+
+      <p>That gap — between what operators believe they're doing and what a real Good Manufacturing Practice system requires — is one of the most consistent things I've seen across every market I've worked in. It's not a knowledge problem. It's a records problem, and records are expensive in a way most P&amp;Ls haven't planned for.</p>
+
+      <h2>GMP isn't a checklist. It's a paper trail with a heartbeat.</h2>
+
+      <p>Most operators think of GMP as a set of physical standards: clean rooms, PPE, pest control, sanitation logs. Those matter, but they're the easy part. The part that actually breaks people is the documentation infrastructure underneath it — batch records that trace every input to every output, deviation reports that get filed <em>and</em> investigated, corrective action logs that get closed out instead of forgotten, training records that prove a person was qualified to do the task they did six months ago when a product later fails testing.</p>
+
+      <p>New York operators have had to build this muscle because the regulatory framework demanded it early. Most other state markets didn't, because their programs didn't require it — until the market matures, an audit shows up, or a wholesale buyer with pharma-adjacent standards starts asking questions. By then, you're not implementing GMP. You're retrofitting it under pressure, which is the most expensive way to do it.</p>
+
+      <h2>The overhead nobody budgets for</h2>
+
+      <p>Here's the part that surprises operators every time: GMP isn't primarily a capital expense. It's a headcount and time expense. Someone has to own quality full-time. Someone has to review every batch record before it closes. Someone has to maintain a document control system so the SOP on the floor is actually the current version, not the one from eight months ago that got hand-edited in Sharpie.</p>
+
+      <p>That's payroll, not equipment. And it's payroll that doesn't touch a single gram of product — which makes it very easy to deprioritize until the day it isn't optional anymore.</p>
+
+      <div class="pull">A GMP system doesn't fail because the SOPs were wrong. It fails because nobody had the bandwidth to actually follow them.</div>
+
+      <p>This is where the Old Guard standard for a sound recommendation matters: any GMP buildout has to be financially responsible and executable by the available team, not just scientifically correct. I've watched operators try to bolt a pharma-grade quality system onto a team that was never resourced to run one.</p>
+
+      <h2>Where to start if you're behind</h2>
+
+      <p>You don't fix this by writing 200 SOPs in a month. You fix it the way you'd diagnose any operational gap — trace it back to root cause before you start prescribing solutions:</p>
+
+      <ul>
+        <li><strong>Map your actual batch flow first.</strong> Most operators don't have a single document that traces material from intake to finished, packaged product. Build that map before you build anything else.</li>
+        <li><strong>Find out where your records already break down.</strong> Pull five real batch records at random. If you can't reconstruct exactly what happened — inputs, personnel, deviations, corrective actions — that's your starting point, not the areas you assume are weak.</li>
+        <li><strong>Assign ownership before you assign paperwork.</strong> A quality system with no accountable owner turns into a folder nobody opens. Decide who owns it before you decide what it says.</li>
+        <li><strong>Build for the audit you'll actually face, not the one you imagine.</strong> A single-state, non-GMP-certified operation doesn't need a pharmaceutical-grade validation package. It needs a system it can actually sustain and defend.</li>
+      </ul>
+
+      <h2>The standard is coming whether or not the paperwork is ready</h2>
+
+      <p>Markets mature. Buyers get pickier. Testing labs get sharper. Whatever the regulatory timeline ends up being, the operators who treat GMP as a real operating discipline now — not a binder they build the week before an audit — are the ones who won't be scrambling when the standard catches up to them.</p>
+
+      <p class="signoff">That's not a compliance opinion. It's an operations one.</p>
+
+      <hr>
+
+      <div class="article-cta">
+        <h3>Not sure where your records would hold up?</h3>
+        <p>Old Guard helps operators build quality and compliance systems sized to what the team can actually sustain — not what looks good in a binder.</p>
+        <a class="btn btn-primary" href="index.html#inquiry-form">Start a conversation</a>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" style="width:100%; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+    <span>© <span id="year"></span> Old Guard Cannabis Advisors LLC</span>
+    <span>Skaneateles, NY</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
