@@ -58,6 +58,22 @@ Both HTML files reference images with relative paths like `images/logo.webp` and
   folded into Record's ledger instead — don't re-add a separate Experience
   section without revisiting this reasoning first.
 
+## SEO (added 2026-07-30)
+- `robots.txt` + `sitemap.xml` live at repo root, canonical domain is
+  `https://oldguardcannabis.com`. Every page has a canonical link, OG/Twitter
+  tags, and `meta robots: index,follow`. `index.html` carries `ProfessionalService`
+  JSON-LD; the blog post carries `BlogPosting` JSON-LD. Keep these in sync if
+  page titles/descriptions change.
+- **Messaging is worldwide, not state-limited.** Alex is available for remote
+  and on-site engagements globally, not just where he's previously worked.
+  The old homepage title/description/hero led with "CO, OR, WA, and NY" —
+  that read as a service-area limitation, so it was reworded to lead with
+  "worldwide" instead (the state list is still accurate as past-experience
+  content in the Record section — that's factual history, not a coverage
+  claim, and wasn't touched). The inquiry form's "State" field was relabeled
+  "Location" for the same reason. Don't reintroduce state-limiting framing
+  in titles/meta/hero copy without checking first.
+
 ## Contact form
 The Contact section (`#contact`) has a real inquiry form (`#inquiry-form`: Name,
 Email, State, "what do you need help with") above the direct email/LinkedIn/
