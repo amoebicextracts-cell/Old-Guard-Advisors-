@@ -2,12 +2,13 @@
 
 ## What this is
 Marketing website for Old Guard Cannabis Advisors LLC (Alex Marzec's cannabis
-extraction/operations consulting practice). Two pages, no framework, no build step —
-plain HTML/CSS/JS, deployed on Vercel from this GitHub repo.
+extraction/operations consulting practice). Plain HTML/CSS/JS, no framework or
+build step, deployed on Vercel from this GitHub repo.
 
 ## File structure (flat on purpose — do not nest into subfolders)
 ```
 index.html              <- main site
+about.html              <- Alex Marzec biography, credentials, and operating record
 portfolio.html          <- photo portfolio page
 images/                 <- logo, hero photos used on index.html
 portfolio-images/       <- all gallery photos used on portfolio.html
@@ -42,6 +43,10 @@ Both HTML files reference images with relative paths like `images/logo.webp` and
   reframed as literal client work (these are real past operating roles, not
   Old Guard advisory engagements — don't claim otherwise, just don't name who
   they were for).
+- **Keep the standalone About page employer-neutral.** It may name Alex, Old
+  Guard, credential issuers, awards, licenses, and anonymized operating outcomes,
+  but must not name former employers or imply past operating roles were Old Guard
+  client engagements.
 - **Writing voice**: avoid "Alex has..." / "Alex did..." as a repeated sentence
   opener — it reads amateurish. Prefer the practice's voice ("this practice is
   built on...") or restructure to lead with the achievement.
