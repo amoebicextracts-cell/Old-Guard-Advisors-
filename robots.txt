@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://oldguardcannabis.com/sitemap.xml
+Sitemap: https://www.oldguardcannabis.com/sitemap.xml

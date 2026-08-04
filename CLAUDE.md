@@ -65,7 +65,7 @@ Both HTML files reference images with relative paths like `images/logo.webp` and
 
 ## SEO (added 2026-07-30)
 - `robots.txt` + `sitemap.xml` live at repo root, canonical domain is
-  `https://oldguardcannabis.com`. Every page has a canonical link, OG/Twitter
+  `https://www.oldguardcannabis.com`. Every page has a canonical link, OG/Twitter
   tags, and `meta robots: index,follow`. `index.html` carries `ProfessionalService`
   JSON-LD; the blog post carries `BlogPosting` JSON-LD. Keep these in sync if
   page titles/descriptions change.
@@ -78,6 +78,16 @@ Both HTML files reference images with relative paths like `images/logo.webp` and
   claim, and wasn't touched). The inquiry form's "State" field was relabeled
   "Location" for the same reason. Don't reintroduce state-limiting framing
   in titles/meta/hero copy without checking first.
+
+## Search + AI optimization (added 2026-08-04)
+- The live Vercel domain redirects the apex domain to `www`, so canonicals, schema
+  URLs, the sitemap, and robots.txt must use `https://www.oldguardcannabis.com`.
+- `cannabis-operations-consulting-faq.html` is the answer hub. Keep its visible
+  questions and FAQPage JSON-LD answers substantively identical.
+- The GMP, extraction-system, and commissioning articles include concise direct-
+  answer blocks. Preserve the answer-first structure when revising them.
+- The root IndexNow key file is intentional. Its filename and contents must remain
+  identical, and the same key is used when notifying participating search engines.
 
 ## Contact form
 The Contact section (`#contact`) has a real inquiry form (`#inquiry-form`: Name,

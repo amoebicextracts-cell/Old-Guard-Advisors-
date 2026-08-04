@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Old Guard Cannabis Advisors — Cannabis Extraction & Operations Consulting Worldwide</title>
 <meta name="description" content="Cannabis extraction, cultivation, and GMP compliance advisory led by Alex Marzec — 20 years of operator experience. Remote and on-site, worldwide.">
-<link rel="canonical" href="https://oldguardcannabis.com/">
+<link rel="canonical" href="https://www.oldguardcannabis.com/">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Old Guard Cannabis Advisors">
 <meta property="og:title" content="Old Guard Cannabis Advisors — Cannabis Extraction & Operations Consulting Worldwide">
 <meta property="og:description" content="Cannabis extraction, cultivation, and GMP compliance advisory led by Alex Marzec — 20 years of operator experience. Remote and on-site, worldwide.">
-<meta property="og:url" content="https://oldguardcannabis.com/">
-<meta property="og:image" content="https://oldguardcannabis.com/images/resin-drop.jpg">
+<meta property="og:url" content="https://www.oldguardcannabis.com/">
+<meta property="og:image" content="https://www.oldguardcannabis.com/images/resin-drop.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Old Guard Cannabis Advisors — Cannabis Extraction & Operations Consulting Worldwide">
 <meta name="twitter:description" content="Cannabis extraction, cultivation, and GMP compliance advisory led by Alex Marzec — 20 years of operator experience. Remote and on-site, worldwide.">
-<meta name="twitter:image" content="https://oldguardcannabis.com/images/resin-drop.jpg">
+<meta name="twitter:image" content="https://www.oldguardcannabis.com/images/resin-drop.jpg">
 
 <link rel="icon" href="images/logo.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,28 +26,57 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Old Guard Cannabis Advisors",
-  "url": "https://oldguardcannabis.com/",
-  "logo": "https://oldguardcannabis.com/images/logo.webp",
-  "image": "https://oldguardcannabis.com/images/resin-drop.jpg",
-  "description": "Cannabis extraction, cultivation, and GMP compliance advisory led by Alex Marzec — 20 years of hands-on operator experience across licensed cultivation and extraction facilities.",
-  "areaServed": "Worldwide",
-  "email": "alex@oldguardcannabis.com",
-  "founder": {
-    "@type": "Person",
-    "name": "Alex Marzec"
-  },
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Skaneateles",
-    "addressRegion": "NY",
-    "addressCountry": "US"
-  },
-  "sameAs": [
-    "https://www.linkedin.com/company/104008501/",
-    "https://www.linkedin.com/in/alexander-marzec-522200228/",
-    "https://www.instagram.com/oldguardcannabisadvisors/"
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.oldguardcannabis.com/#website",
+      "url": "https://www.oldguardcannabis.com/",
+      "name": "Old Guard Cannabis Advisors",
+      "publisher": { "@id": "https://www.oldguardcannabis.com/#organization" },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.oldguardcannabis.com/#organization",
+      "name": "Old Guard Cannabis Advisors",
+      "url": "https://www.oldguardcannabis.com/",
+      "logo": "https://www.oldguardcannabis.com/images/logo.webp",
+      "image": "https://www.oldguardcannabis.com/images/resin-drop.jpg",
+      "description": "Cannabis extraction, cultivation, facility commissioning, and GMP compliance advisory led by Alex Marzec, with remote and on-site engagements available worldwide.",
+      "areaServed": "Worldwide",
+      "email": "alex@oldguardcannabis.com",
+      "founder": { "@id": "https://www.oldguardcannabis.com/about.html#alex-marzec" },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Skaneateles",
+        "addressRegion": "NY",
+        "addressCountry": "US"
+      },
+      "knowsAbout": [
+        "Cannabis extraction systems",
+        "Cannabis cultivation operations",
+        "Cannabis facility commissioning",
+        "Good Manufacturing Practices",
+        "HACCP",
+        "Quality systems"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/company/104008501/",
+        "https://www.instagram.com/oldguardcannabisadvisors/"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.oldguardcannabis.com/about.html#alex-marzec",
+      "name": "Alex Marzec",
+      "url": "https://www.oldguardcannabis.com/about.html",
+      "jobTitle": "Cannabis Operations Advisor",
+      "worksFor": { "@id": "https://www.oldguardcannabis.com/#organization" },
+      "sameAs": [
+        "https://www.linkedin.com/in/alexander-marzec-522200228/",
+        "https://www.instagram.com/ahashmakernamedalex2.0/"
+      ]
+    }
   ]
 }
 </script>
@@ -246,6 +275,9 @@
   @media (max-width:760px){ .services{grid-template-columns:1fr;} }
   .service{background:var(--void); padding:44px 40px;}
   section.alt .service{background:var(--panel);}
+  .answer-resource{margin-top:28px;padding:24px 28px;border:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:24px;background:rgba(12,14,9,.35)}
+  .answer-resource p{color:var(--ink-dim);font-size:17px}.answer-resource a{font-family:var(--utility);font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--gold-bright);text-decoration:none;white-space:nowrap}.answer-resource a:hover{color:var(--ink)}
+  @media(max-width:680px){.answer-resource{align-items:flex-start;flex-direction:column}}
   .service h3{
     font-family:var(--display); font-size:21px; font-weight:600; color:var(--gold-bright);
     margin-bottom:16px; letter-spacing:0.01em;
@@ -421,6 +453,10 @@
           <p>Ground-up development of web-based operations platforms and AI-assisted compliance auditing — built from firsthand experience running the floor these systems are meant to manage, not a vendor guessing at your workflow.</p>
           <div class="tag-row"><span class="tag">Custom Platforms</span><span class="tag">AI-Assisted Auditing</span><span class="tag">ResinOps</span></div>
         </div>
+      </div>
+      <div class="answer-resource reveal">
+        <p>Planning a facility, comparing extraction systems, or assessing GMP readiness?</p>
+        <a href="cannabis-operations-consulting-faq.html">Read the operations consulting FAQ →</a>
       </div>
     </div>
   </section>
