@@ -265,7 +265,11 @@
     current.forEach((item, i) => {
       const div = document.createElement('div');
       div.className = 'film-item';
-      div.innerHTML = '<img src="' + item.src + '" loading="lazy" alt="">';
+      const img = document.createElement('img');
+      img.src = item.src;
+      img.loading = 'lazy';
+      img.alt = '';
+      div.appendChild(img);
       div.addEventListener('click', () => goTo(i));
       filmstripEl.appendChild(div);
     });
