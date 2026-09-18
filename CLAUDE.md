@@ -2,12 +2,13 @@
 
 ## What this is
 Marketing website for Old Guard Cannabis Advisors LLC (Alex Marzec's cannabis
-extraction/operations consulting practice). Two pages, no framework, no build step —
-plain HTML/CSS/JS, deployed on Vercel from this GitHub repo.
+extraction/operations consulting practice). Plain HTML/CSS/JS, no framework or
+build step, deployed on Vercel from this GitHub repo.
 
 ## File structure (flat on purpose — do not nest into subfolders)
 ```
 index.html              <- main site
+about.html              <- Alex Marzec biography, credentials, and operating record
 portfolio.html          <- photo portfolio page
 images/                 <- logo, hero photos used on index.html
 portfolio-images/       <- all gallery photos used on portfolio.html
@@ -42,6 +43,10 @@ Both HTML files reference images with relative paths like `images/logo.webp` and
   reframed as literal client work (these are real past operating roles, not
   Old Guard advisory engagements — don't claim otherwise, just don't name who
   they were for).
+- **Keep the standalone About page employer-neutral.** It may name Alex, Old
+  Guard, credential issuers, awards, licenses, and anonymized operating outcomes,
+  but must not name former employers or imply past operating roles were Old Guard
+  client engagements.
 - **Writing voice**: avoid "Alex has..." / "Alex did..." as a repeated sentence
   opener — it reads amateurish. Prefer the practice's voice ("this practice is
   built on...") or restructure to lead with the achievement.
@@ -60,7 +65,7 @@ Both HTML files reference images with relative paths like `images/logo.webp` and
 
 ## SEO (added 2026-07-30)
 - `robots.txt` + `sitemap.xml` live at repo root, canonical domain is
-  `https://oldguardcannabis.com`. Every page has a canonical link, OG/Twitter
+  `https://www.oldguardcannabis.com`. Every page has a canonical link, OG/Twitter
   tags, and `meta robots: index,follow`. `index.html` carries `ProfessionalService`
   JSON-LD; the blog post carries `BlogPosting` JSON-LD. Keep these in sync if
   page titles/descriptions change.
@@ -73,6 +78,16 @@ Both HTML files reference images with relative paths like `images/logo.webp` and
   claim, and wasn't touched). The inquiry form's "State" field was relabeled
   "Location" for the same reason. Don't reintroduce state-limiting framing
   in titles/meta/hero copy without checking first.
+
+## Search + AI optimization (added 2026-08-04)
+- The live Vercel domain redirects the apex domain to `www`, so canonicals, schema
+  URLs, the sitemap, and robots.txt must use `https://www.oldguardcannabis.com`.
+- `cannabis-operations-consulting-faq.html` is the answer hub. Keep its visible
+  questions and FAQPage JSON-LD answers substantively identical.
+- The GMP, extraction-system, and commissioning articles include concise direct-
+  answer blocks. Preserve the answer-first structure when revising them.
+- The root IndexNow key file is intentional. Its filename and contents must remain
+  identical, and the same key is used when notifying participating search engines.
 
 ## Contact form
 The Contact section (`#contact`) has a real inquiry form (`#inquiry-form`: Name,
