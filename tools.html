@@ -323,6 +323,10 @@
           <label for="gate-email">Email</label>
           <input type="email" id="gate-email" name="email" autocomplete="email" required>
         </div>
+        <input type="checkbox" name="botcheck" id="gate-botcheck" style="display:none;" tabindex="-1" autocomplete="off">
+        <div class="gate-full">
+          <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
+        </div>
         <div class="gate-error" id="gate-error"></div>
         <div class="gate-full">
           <button class="btn btn-primary" id="gate-submit" type="button" onclick="submitGate()">Send me the library</button>
@@ -377,6 +381,18 @@
       errEl.style.display = 'block';
       return;
     }
+    // botcheck is a hidden field real visitors never see/fill -- a bot that
+    // blindly fills every field trips it. hCaptcha's client script (loaded
+    // below) populates this textarea itself once solved.
+    if(document.getElementById('gate-botcheck').checked){
+      return; // silently drop -- don't tip off the bot with an error
+    }
+    const captchaResponse = document.querySelector('textarea[name="h-captcha-response"]')?.value || '';
+    if(!captchaResponse){
+      errEl.textContent = 'Please complete the captcha.';
+      errEl.style.display = 'block';
+      return;
+    }
     errEl.style.display = 'none';
     btn.disabled = true;
     btn.textContent = 'Sending…';
@@ -390,6 +406,8 @@
           subject: `Old Guard tools request — ${name}`,
           from_name: 'Old Guard Cannabis Advisors — Website',
           name, email,
+          botcheck: '',
+          'h-captcha-response': captchaResponse,
         }),
       });
       const data = await res.json();
@@ -404,6 +422,8 @@
     }
   }
 </script>
+
+<script src="https://web3forms.com/client/script.js" async defer></script>
 
 </body>
 </html>

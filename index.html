@@ -669,6 +669,10 @@
             <option>Something else</option>
           </select>
         </div>
+        <input type="checkbox" name="botcheck" id="inq-botcheck" style="display:none;" tabindex="-1" autocomplete="off">
+        <div class="inquiry-full">
+          <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
+        </div>
         <div class="inquiry-error" id="inquiry-error"></div>
         <div class="inquiry-full">
           <button class="btn btn-primary inquiry-submit" id="inquiry-submit" type="button" onclick="submitInquiry()">Send inquiry</button>
@@ -723,6 +727,18 @@
       errEl.style.display = 'block';
       return;
     }
+    // botcheck is a hidden field real visitors never see/fill -- a bot that
+    // blindly fills every field trips it. hCaptcha's client script (loaded
+    // below) populates this textarea itself once solved.
+    if(document.getElementById('inq-botcheck').checked){
+      return; // silently drop -- don't tip off the bot with an error
+    }
+    const captchaResponse = document.querySelector('textarea[name="h-captcha-response"]')?.value || '';
+    if(!captchaResponse){
+      errEl.textContent = 'Please complete the captcha.';
+      errEl.style.display = 'block';
+      return;
+    }
     errEl.style.display = 'none';
     btn.disabled = true;
     btn.textContent = 'Sending…';
@@ -736,6 +752,8 @@
           subject: `Old Guard inquiry — ${name}`,
           from_name: 'Old Guard Cannabis Advisors — Website',
           name, email, state, need,
+          botcheck: '',
+          'h-captcha-response': captchaResponse,
         }),
       });
       const data = await res.json();
@@ -762,6 +780,8 @@
     nav.style.borderBottomColor = window.scrollY > 40 ? 'rgba(201,162,75,0.35)' : 'rgba(201,162,75,0.1)';
   });
 </script>
+
+<script src="https://web3forms.com/client/script.js" async defer></script>
 
 </body>
 </html>
