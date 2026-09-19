@@ -108,8 +108,14 @@
   .tool-row{
     display:grid; grid-template-columns:44px 1fr; gap:20px;
     padding:18px 0; border-bottom:1px solid var(--rule-soft);
+    scroll-margin-top:110px;
   }
   .tool-row:last-child{border-bottom:none;}
+  .tool-row:target{animation:tool-highlight 2.4s ease-out;}
+  @keyframes tool-highlight{
+    0%{background:rgba(201,162,75,0.14);}
+    100%{background:transparent;}
+  }
   .tool-num{font-family:var(--display); font-size:18px; color:var(--gold-bright);}
   .tool-name{font-family:var(--display); font-size:17.5px; font-weight:600; color:var(--ink); margin-bottom:6px;}
   .tool-desc{color:var(--ink-dim); font-size:15.5px; line-height:1.55;}
@@ -204,7 +210,7 @@
 
         <div class="tool-group">
           <div class="tool-group-label">Facility Startup</div>
-          <div class="tool-row">
+          <div class="tool-row" id="tool-01">
             <div class="tool-num">01</div>
             <div>
               <div class="tool-name">Facility Commissioning Timeline Checklist</div>
@@ -229,7 +235,7 @@
 
         <div class="tool-group">
           <div class="tool-group-label">Extraction System Selection</div>
-          <div class="tool-row">
+          <div class="tool-row" id="tool-04">
             <div class="tool-num">04</div>
             <div>
               <div class="tool-name">Extraction System Selection Scorecard</div>
@@ -254,7 +260,7 @@
 
         <div class="tool-group">
           <div class="tool-group-label">Compliance Build</div>
-          <div class="tool-row">
+          <div class="tool-row" id="tool-07">
             <div class="tool-num">07</div>
             <div>
               <div class="tool-name">GMP Readiness Self-Assessment</div>
